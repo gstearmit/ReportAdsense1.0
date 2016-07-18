@@ -1,0 +1,12 @@
+2016-07-18T13:45:12+07:00 CRIT (2):  Error PHP 
+file => /Applications/XAMPP/xamppfiles/htdocs/ReportAdsen1.0/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php at line : 159
+type error => E_USER_DEPRECATED : ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class LogBug\Service\Email to remove the implementation, and start injecting your dependencies via factory instead.
+ 
+ ____________ 
+
+2016-07-18T13:45:16+07:00 CRIT (2):  Error PHP 
+file => /Applications/XAMPP/xamppfiles/htdocs/ReportAdsen1.0/vendor/zendframework/zend-mvc/src/Service/ServiceManagerConfig.php at line : 159
+type error => E_USER_DEPRECATED : ServiceLocatorAwareInterface is deprecated and will be removed in version 3.0, along with the ServiceLocatorAwareInitializer. Please update your class LogBug\Service\Email to remove the implementation, and start injecting your dependencies via factory instead.
+ 
+ ____________ 
+

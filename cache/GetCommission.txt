@@ -1,0 +1,518 @@
+
+   ------------------------------------------ 
+
+2016-07-12 18:13:32  
+Host => localhost/Summary
+IP Request => ::1
+Date => 2016-07-12 18:13
+ 
+ Text => FOR FUNCTION SEND CASH MONEYTRANSFER
+Data GetCommission =>array (
+  'BankID' => '673379',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '1',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+Data_Array_GetComission =>array (
+  'BankID' => '673379',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '1',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+data_bank =>array (
+  'ID' => '673379',
+  'Address' => '181 Nguyen Luong Bang Street, Dong Da District',
+  'Name' => 'DONGA Bank, HA NOI BRANCH',
+  'PSCODE' => 'MONEYPOLO',
+  'ApproximateComission' => '0',
+  'BankDataPrefilled' => '0',
+  'Currencies' => 'USD;EUR;',
+  'CurrenciesReceive' => 'USD;EUR;',
+  'PayoutBankBranch' => 'DONGA Bank, HA NOI BRANCH',
+  'PayoutBankBranchCode' => '',
+  'PayoutBankName' => 'DONGA Bank, HA NOI BRANCH',
+  'PayoutType' => 'CASH;',
+  'Phone' => '04 -3 533 4588',
+  'RemoteID' => '29',
+  'VirtualBankID' => '0',
+  'WorkingDays' => '',
+  'WorkingHours' => '',
+)
+
+ ============>
+   ------------------------------------------ 
+
+2016-07-12 18:13:49  
+Host => localhost/Summary
+IP Request => ::1
+Date => 2016-07-12 18:13
+ 
+ Text => FOR FUNCTION SEND CASH MONEYTRANSFER
+Data GetCommission =>array (
+  'BankID' => '673379',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '2',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+Data_Array_GetComission =>array (
+  'BankID' => '673379',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '2',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+data_bank =>array (
+  'ID' => '673379',
+  'Address' => '181 Nguyen Luong Bang Street, Dong Da District',
+  'Name' => 'DONGA Bank, HA NOI BRANCH',
+  'PSCODE' => 'MONEYPOLO',
+  'ApproximateComission' => '0',
+  'BankDataPrefilled' => '0',
+  'Currencies' => 'USD;EUR;',
+  'CurrenciesReceive' => 'USD;EUR;',
+  'PayoutBankBranch' => 'DONGA Bank, HA NOI BRANCH',
+  'PayoutBankBranchCode' => '',
+  'PayoutBankName' => 'DONGA Bank, HA NOI BRANCH',
+  'PayoutType' => 'CASH;',
+  'Phone' => '04 -3 533 4588',
+  'RemoteID' => '29',
+  'VirtualBankID' => '0',
+  'WorkingDays' => '',
+  'WorkingHours' => '',
+)
+
+ ============>
+   ------------------------------------------ 
+
+2016-07-12 18:16:20  
+Host => localhost/Summary
+IP Request => ::1
+Date => 2016-07-12 18:16
+ 
+ Text => FOR FUNCTION SEND CASH MONEYTRANSFER
+Data GetCommission =>array (
+  'BankID' => '673310',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '1',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+Data_Array_GetComission =>array (
+  'BankID' => '673310',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '1',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+data_bank =>array (
+  'ID' => '673310',
+  'Address' => 'Office 14, 500 Chiswick High Rd, W4 5RG, London, UK.',
+  'Name' => 'Money Polo London',
+  'PSCODE' => 'MONEYPOLO',
+  'ApproximateComission' => '0.00',
+  'BankDataPrefilled' => '0',
+  'Currencies' => 'USD;EUR;GBP;CZK;',
+  'CurrenciesReceive' => 'USD;EUR;GBP;CZK;',
+  'PayoutBankBranch' => 'Money Polo London',
+  'PayoutBankBranchCode' => '',
+  'PayoutBankName' => 'Money Polo London',
+  'PayoutType' => 'CASH;',
+  'Phone' => '00442089562251',
+  'RemoteID' => '1',
+  'VirtualBankID' => '0',
+  'WorkingDays' => '',
+  'WorkingHours' => '',
+)
+
+ ============>
+   ------------------------------------------ 
+
+2016-07-12 18:16:46  
+Host => localhost/Summary
+IP Request => ::1
+Date => 2016-07-12 18:16
+ 
+ Text => FOR FUNCTION SEND CASH MONEYTRANSFER
+Data GetCommission =>array (
+  'BankID' => '673310',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '1',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+Data_Array_GetComission =>array (
+  'BankID' => '673310',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '1',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+data_bank =>array (
+  'ID' => '673310',
+  'Address' => 'Office 14, 500 Chiswick High Rd, W4 5RG, London, UK.',
+  'Name' => 'Money Polo London',
+  'PSCODE' => 'MONEYPOLO',
+  'ApproximateComission' => '0.00',
+  'BankDataPrefilled' => '0',
+  'Currencies' => 'USD;EUR;GBP;CZK;',
+  'CurrenciesReceive' => 'USD;EUR;GBP;CZK;',
+  'PayoutBankBranch' => 'Money Polo London',
+  'PayoutBankBranchCode' => '',
+  'PayoutBankName' => 'Money Polo London',
+  'PayoutType' => 'CASH;',
+  'Phone' => '00442089562251',
+  'RemoteID' => '1',
+  'VirtualBankID' => '0',
+  'WorkingDays' => '',
+  'WorkingHours' => '',
+)
+
+ ============>
+   ------------------------------------------ 
+
+2016-07-12 18:17:55  
+Host => localhost/Summary
+IP Request => ::1
+Date => 2016-07-12 18:17
+ 
+ Text => FOR FUNCTION SEND CASH MONEYTRANSFER
+Data GetCommission =>array (
+  'BankID' => '673310',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '2',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+Data_Array_GetComission =>array (
+  'BankID' => '673310',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '2',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+data_bank =>array (
+  'ID' => '673310',
+  'Address' => 'Office 14, 500 Chiswick High Rd, W4 5RG, London, UK.',
+  'Name' => 'Money Polo London',
+  'PSCODE' => 'MONEYPOLO',
+  'ApproximateComission' => '0.00',
+  'BankDataPrefilled' => '0',
+  'Currencies' => 'USD;EUR;GBP;CZK;',
+  'CurrenciesReceive' => 'USD;EUR;GBP;CZK;',
+  'PayoutBankBranch' => 'Money Polo London',
+  'PayoutBankBranchCode' => '',
+  'PayoutBankName' => 'Money Polo London',
+  'PayoutType' => 'CASH;',
+  'Phone' => '00442089562251',
+  'RemoteID' => '1',
+  'VirtualBankID' => '0',
+  'WorkingDays' => '',
+  'WorkingHours' => '',
+)
+
+ ============>
+   ------------------------------------------ 
+
+2016-07-12 18:18:40  
+Host => localhost/Summary
+IP Request => ::1
+Date => 2016-07-12 18:18
+ 
+ Text => FOR FUNCTION SEND CASH MONEYTRANSFER
+Data GetCommission =>array (
+  'BankID' => '673310',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '2',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+Data_Array_GetComission =>array (
+  'BankID' => '673310',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '2',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+data_bank =>array (
+  'ID' => '673310',
+  'Address' => 'Office 14, 500 Chiswick High Rd, W4 5RG, London, UK.',
+  'Name' => 'Money Polo London',
+  'PSCODE' => 'MONEYPOLO',
+  'ApproximateComission' => '0.00',
+  'BankDataPrefilled' => '0',
+  'Currencies' => 'USD;EUR;GBP;CZK;',
+  'CurrenciesReceive' => 'USD;EUR;GBP;CZK;',
+  'PayoutBankBranch' => 'Money Polo London',
+  'PayoutBankBranchCode' => '',
+  'PayoutBankName' => 'Money Polo London',
+  'PayoutType' => 'CASH;',
+  'Phone' => '00442089562251',
+  'RemoteID' => '1',
+  'VirtualBankID' => '0',
+  'WorkingDays' => '',
+  'WorkingHours' => '',
+)
+
+ ============>
+   ------------------------------------------ 
+
+2016-07-12 18:23:44  
+Host => localhost/Summary
+IP Request => ::1
+Date => 2016-07-12 18:23
+ 
+ Text => FOR FUNCTION SEND CASH MONEYTRANSFER
+Data GetCommission =>array (
+  'BankID' => '673310',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '1',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+Data_Array_GetComission =>array (
+  'BankID' => '673310',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '1',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+data_bank =>array (
+  'ID' => '673310',
+  'Address' => 'Office 14, 500 Chiswick High Rd, W4 5RG, London, UK.',
+  'Name' => 'Money Polo London',
+  'PSCODE' => 'MONEYPOLO',
+  'ApproximateComission' => '0.00',
+  'BankDataPrefilled' => '0',
+  'Currencies' => 'USD;EUR;GBP;CZK;',
+  'CurrenciesReceive' => 'USD;EUR;GBP;CZK;',
+  'PayoutBankBranch' => 'Money Polo London',
+  'PayoutBankBranchCode' => '',
+  'PayoutBankName' => 'Money Polo London',
+  'PayoutType' => 'CASH;',
+  'Phone' => '00442089562251',
+  'RemoteID' => '1',
+  'VirtualBankID' => '0',
+  'WorkingDays' => '',
+  'WorkingHours' => '',
+)
+
+ ============>
+   ------------------------------------------ 
+
+2016-07-12 18:30:10  
+Host => localhost/Summary
+IP Request => ::1
+Date => 2016-07-12 18:30
+ 
+ Text => FOR FUNCTION SEND CASH MONEYTRANSFER
+Data GetCommission =>array (
+  'BankID' => '673310',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '2',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+Data_Array_GetComission =>array (
+  'BankID' => '673310',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '2',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+data_bank =>array (
+  'ID' => '673310',
+  'Address' => 'Office 14, 500 Chiswick High Rd, W4 5RG, London, UK.',
+  'Name' => 'Money Polo London',
+  'PSCODE' => 'MONEYPOLO',
+  'ApproximateComission' => '0.00',
+  'BankDataPrefilled' => '0',
+  'Currencies' => 'USD;EUR;GBP;CZK;',
+  'CurrenciesReceive' => 'USD;EUR;GBP;CZK;',
+  'PayoutBankBranch' => 'Money Polo London',
+  'PayoutBankBranchCode' => '',
+  'PayoutBankName' => 'Money Polo London',
+  'PayoutType' => 'CASH;',
+  'Phone' => '00442089562251',
+  'RemoteID' => '1',
+  'VirtualBankID' => '0',
+  'WorkingDays' => '',
+  'WorkingHours' => '',
+)
+
+ ============>
+   ------------------------------------------ 
+
+2016-07-12 18:30:42  
+Host => localhost/Summary
+IP Request => ::1
+Date => 2016-07-12 18:30
+ 
+ Text => FOR FUNCTION SEND CASH MONEYTRANSFER
+Data GetCommission =>array (
+  'BankID' => '673379',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '2',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+Data_Array_GetComission =>array (
+  'BankID' => '673379',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '2',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+data_bank =>array (
+  'ID' => '673379',
+  'Address' => '181 Nguyen Luong Bang Street, Dong Da District',
+  'Name' => 'DONGA Bank, HA NOI BRANCH',
+  'PSCODE' => 'MONEYPOLO',
+  'ApproximateComission' => '0',
+  'BankDataPrefilled' => '0',
+  'Currencies' => 'USD;EUR;',
+  'CurrenciesReceive' => 'USD;EUR;',
+  'PayoutBankBranch' => 'DONGA Bank, HA NOI BRANCH',
+  'PayoutBankBranchCode' => '',
+  'PayoutBankName' => 'DONGA Bank, HA NOI BRANCH',
+  'PayoutType' => 'CASH;',
+  'Phone' => '04 -3 533 4588',
+  'RemoteID' => '29',
+  'VirtualBankID' => '0',
+  'WorkingDays' => '',
+  'WorkingHours' => '',
+)
+
+ ============>
+   ------------------------------------------ 
+
+2016-07-12 18:31:02  
+Host => localhost/Summary
+IP Request => ::1
+Date => 2016-07-12 18:31
+ 
+ Text => FOR FUNCTION SEND CASH MONEYTRANSFER
+Data GetCommission =>array (
+  'BankID' => '673379',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '1',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+Data_Array_GetComission =>array (
+  'BankID' => '673379',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '1',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+data_bank =>array (
+  'ID' => '673379',
+  'Address' => '181 Nguyen Luong Bang Street, Dong Da District',
+  'Name' => 'DONGA Bank, HA NOI BRANCH',
+  'PSCODE' => 'MONEYPOLO',
+  'ApproximateComission' => '0',
+  'BankDataPrefilled' => '0',
+  'Currencies' => 'USD;EUR;',
+  'CurrenciesReceive' => 'USD;EUR;',
+  'PayoutBankBranch' => 'DONGA Bank, HA NOI BRANCH',
+  'PayoutBankBranchCode' => '',
+  'PayoutBankName' => 'DONGA Bank, HA NOI BRANCH',
+  'PayoutType' => 'CASH;',
+  'Phone' => '04 -3 533 4588',
+  'RemoteID' => '29',
+  'VirtualBankID' => '0',
+  'WorkingDays' => '',
+  'WorkingHours' => '',
+)
+
+ ============>
+   ------------------------------------------ 
+
+2016-07-12 18:31:08  
+Host => localhost/Summary
+IP Request => ::1
+Date => 2016-07-12 18:31
+ 
+ Text => FOR FUNCTION SEND CASH MONEYTRANSFER
+Data GetCommission =>array (
+  'BankID' => '673379',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '2',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+Data_Array_GetComission =>array (
+  'BankID' => '673379',
+  'ComissionIncluded' => '1',
+  'CurrencyCode' => 'USD',
+  'Amount' => '2',
+  'UserID' => '6714',
+  'Discount' => '',
+  'AutoProcess' => '0',
+)
+data_bank =>array (
+  'ID' => '673379',
+  'Address' => '181 Nguyen Luong Bang Street, Dong Da District',
+  'Name' => 'DONGA Bank, HA NOI BRANCH',
+  'PSCODE' => 'MONEYPOLO',
+  'ApproximateComission' => '0',
+  'BankDataPrefilled' => '0',
+  'Currencies' => 'USD;EUR;',
+  'CurrenciesReceive' => 'USD;EUR;',
+  'PayoutBankBranch' => 'DONGA Bank, HA NOI BRANCH',
+  'PayoutBankBranchCode' => '',
+  'PayoutBankName' => 'DONGA Bank, HA NOI BRANCH',
+  'PayoutType' => 'CASH;',
+  'Phone' => '04 -3 533 4588',
+  'RemoteID' => '29',
+  'VirtualBankID' => '0',
+  'WorkingDays' => '',
+  'WorkingHours' => '',
+)
+
+ ============>
