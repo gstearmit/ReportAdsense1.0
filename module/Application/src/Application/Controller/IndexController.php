@@ -9,13 +9,23 @@
 
 namespace Application\Controller;
 
+use Zend\Db\Sql\Select;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Paginator\Adapter\Iterator as paginatorIterator;
+use Zend\Paginator\Paginator;
+use Zend\Session\Container;
 use Zend\View\Model\ViewModel;
+  
+ 
+use Zend\Paginator\Adapter\Null as PageNull;
 
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+    	
         return new ViewModel();
     }
+     
+   
 }

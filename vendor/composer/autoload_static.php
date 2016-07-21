@@ -12,7 +12,7 @@ class ComposerStaticIniteb046e889bcadf3c891d61c8c457822e
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
-        'ee4ca48c5c36b680e383db265b2e7f0a' => __DIR__ . '/..' . '/google/apiclient/src/Google/autoload.php',
+        'c766e66af900e7369f5cf7253144663a' => __DIR__ . '/..' . '/google/apiclient/src/Google/autoload.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -469,6 +469,10 @@ class ComposerStaticIniteb046e889bcadf3c891d61c8c457822e
             array (
                 0 => __DIR__ . '/..' . '/zendframework/zendxml/library',
             ),
+            'ZF2FileUploadExamples' => 
+            array (
+                0 => __DIR__ . '/..' . '/cgm/zf2-file-upload-examples/src',
+            ),
         ),
         'S' => 
         array (
@@ -504,6 +508,13 @@ class ComposerStaticIniteb046e889bcadf3c891d61c8c457822e
             'Hybrid' => 
             array (
                 0 => __DIR__ . '/..' . '/hybridauth/hybridauth/hybridauth',
+            ),
+        ),
+        'F' => 
+        array (
+            'FlashNotyMessenger' => 
+            array (
+                0 => __DIR__ . '/..' . '/tasmaniski/zf2-flash-noty-messenger/src',
             ),
         ),
         'D' => 
@@ -569,6 +580,9 @@ class ComposerStaticIniteb046e889bcadf3c891d61c8c457822e
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'FlashNotyMessenger\\Factory\\View\\Helper\\FlashNotyFactory' => __DIR__ . '/..' . '/tasmaniski/zf2-flash-noty-messenger/src/FlashNotyMessenger/Factory/View/Helper/FlashNotyFactory.php',
+        'FlashNotyMessenger\\Module' => __DIR__ . '/..' . '/tasmaniski/zf2-flash-noty-messenger/src/FlashNotyMessenger/Module.php',
+        'FlashNotyMessenger\\View\\Helper\\FlashNoty' => __DIR__ . '/..' . '/tasmaniski/zf2-flash-noty-messenger/src/FlashNotyMessenger/View/Helper/FlashNoty.php',
         'Generic_Sniffs_Arrays_DisallowLongArraySyntaxSniff' => __DIR__ . '/..' . '/squizlabs/php_codesniffer/CodeSniffer/Standards/Generic/Sniffs/Arrays/DisallowLongArraySyntaxSniff.php',
         'Generic_Sniffs_Arrays_DisallowShortArraySyntaxSniff' => __DIR__ . '/..' . '/squizlabs/php_codesniffer/CodeSniffer/Standards/Generic/Sniffs/Arrays/DisallowShortArraySyntaxSniff.php',
         'Generic_Sniffs_Classes_DuplicateClassNameSniff' => __DIR__ . '/..' . '/squizlabs/php_codesniffer/CodeSniffer/Standards/Generic/Sniffs/Classes/DuplicateClassNameSniff.php',
@@ -3693,6 +3707,7 @@ class ComposerStaticIniteb046e889bcadf3c891d61c8c457822e
         'Squiz_Sniffs_WhiteSpace_SuperfluousWhitespaceSniff' => __DIR__ . '/..' . '/squizlabs/php_codesniffer/CodeSniffer/Standards/Squiz/Sniffs/WhiteSpace/SuperfluousWhitespaceSniff.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'Users\\Module' => __DIR__ . '/..' . '/kaushalkishorejaiswal/users/Module.php',
+        'ZF2FileUploadExamples\\Module' => __DIR__ . '/..' . '/cgm/zf2-file-upload-examples/Module.php',
         'Zend\\I18n\\Translator\\Resources' => __DIR__ . '/..' . '/zendframework/zend-i18n-resources/src/Resources.php',
         'Zend_Sniffs_Debug_CodeAnalyzerSniff' => __DIR__ . '/..' . '/squizlabs/php_codesniffer/CodeSniffer/Standards/Zend/Sniffs/Debug/CodeAnalyzerSniff.php',
         'Zend_Sniffs_Files_ClosingTagSniff' => __DIR__ . '/..' . '/squizlabs/php_codesniffer/CodeSniffer/Standards/Zend/Sniffs/Files/ClosingTagSniff.php',

@@ -20,7 +20,8 @@ return array(
     	'ZfSnapEventDebugger',
     	'Jhu\ZdtLoggerModule',
     	'AistGitTools',
-    		
+    	
+    	'Acelaya',
         'Application', 
     	# 'LogBug',
     	'GoogleApi',
@@ -30,6 +31,8 @@ return array(
 //     	'ZfcUser',
     	  
     	'Users',
+    	'ZF2FileUploadExamples',
+    	
     ),
 
     // These are various options for the listeners attached to the ModuleManager

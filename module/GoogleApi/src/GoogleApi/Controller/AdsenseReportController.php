@@ -23,6 +23,9 @@ use GoogleApi\Service\GenerateReport;
 class AdsenseReportController extends AbstractActionController {
 	 
 	public function SetParamAdsenseAction() {
+		
+		# http://localhost:8090/file-upload-examples/multi-html5
+		
 		// https://developers.google.com/api-client-library/php/auth/web-app 
 		$authUrl = '';
 		// Set up authentication.

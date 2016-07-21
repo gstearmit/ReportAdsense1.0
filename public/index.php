@@ -7,6 +7,10 @@
  * This makes our life easier when dealing with paths. Everything is relative
  * to the application root now.
  */
+// Define file upload properties
+// ini_set('post_max_size', '1536M');
+// ini_set('upload_max_filesize', '1536M');
+// ini_set('memory_limit', '1536M');
 
 $filename_client_param = __DIR__.'/param.php';
 $now_file = __DIR__.'/nowpr.php';

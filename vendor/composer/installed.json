@@ -7048,5 +7048,94 @@
             "zendframework2",
             "zf2"
         ]
+    },
+    {
+        "name": "cgm/zf2-file-upload-examples",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cgmartin/ZF2FileUploadExamples.git",
+            "reference": "abd00718dda2b8a4715ce5a48e79050e6b50652b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cgmartin/ZF2FileUploadExamples/zipball/abd00718dda2b8a4715ce5a48e79050e6b50652b",
+            "reference": "abd00718dda2b8a4715ce5a48e79050e6b50652b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "zendframework/zendframework": ">=2.1.0"
+        },
+        "time": "2013-01-31 03:22:57",
+        "type": "module",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "ZF2FileUploadExamples": "src/"
+            },
+            "classmap": [
+                "./Module.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Christopher Martin",
+                "email": "cgmartin@gmail.com",
+                "homepage": "http://cgmartin.com"
+            }
+        ],
+        "description": "Form file upload examples for Zend Framework 2",
+        "homepage": "https://github.com/cgmartin/ZF2FileUploadExamples"
+    },
+    {
+        "name": "tasmaniski/zf2-flash-noty-messenger",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/tasmaniski/zf2-flash-noty-messenger.git",
+            "reference": "9b133dab470f5f5507d8636fafd913659e243be5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/tasmaniski/zf2-flash-noty-messenger/zipball/9b133dab470f5f5507d8636fafd913659e243be5",
+            "reference": "9b133dab470f5f5507d8636fafd913659e243be5",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5",
+            "zendframework/zendframework": "2.5.*"
+        },
+        "time": "2016-03-06 21:31:24",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "FlashNotyMessenger": "src/"
+            },
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "Aleksandar Varnicic",
+                "email": "tasmaniski@gmail.com"
+            }
+        ],
+        "description": "View Helper for beautiful JS notifications.",
+        "homepage": "https://github.com/tasmaniski",
+        "keywords": [
+            "js-noty",
+            "notifications",
+            "zf2"
+        ]
     }
 ]
