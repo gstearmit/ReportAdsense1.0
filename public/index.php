@@ -8,7 +8,15 @@
  * to the application root now.
  */
 
+$filename_client_param = __DIR__.'/param.php';
+$now_file = __DIR__.'/nowpr.php';
 
+if( @file_exists($filename_client_param) || @file_exists($now_file)   ) {
+	include $filename_client_param;
+	include $now_file;
+}else { die("Oops Error param");}
+
+ini_set ( "error_reporting", E_ALL & ~ E_DEPRECATED & ~E_USER_DEPRECATED  & ~ E_STRICT );
 
 chdir(dirname(__DIR__));
 
@@ -21,8 +29,11 @@ if (php_sapi_name() === 'cli-server') {
     unset($path);
 }
 
+
+
 // Setup autoloading
 require 'init_autoloader.php';
+
 
 // Run the application!
 Zend\Mvc\Application::init(require 'config/application.config.php')->run();

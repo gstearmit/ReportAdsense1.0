@@ -29,12 +29,21 @@ return array(
             'application' => array(
                 'type'    => 'Literal',
                 'options' => array(
+                	   /*	
                     'route'    => '/application',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller'    => 'Index',
                         'action'        => 'index',
                     ),
+                		*/
+                		
+                		'route'    => '/application',
+                		'defaults' => array(
+                				'__NAMESPACE__' => 'GoogleApi\Controller',
+            					'controller' => 'GoogleApi\Controller\Adsense',
+                				'action'        => 'loginAuthen',
+                		),
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
