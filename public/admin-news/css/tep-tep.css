@@ -1,0 +1,117 @@
+.form-top {
+	width: 100%;
+	float: left;
+	position: relative;
+}
+
+.form-top-left {
+	float: left;
+	width: 75%;
+	padding-top: 25px;
+}
+
+.form-top-left h3 { margin-top: 0; }
+
+.form-top-right {
+	float: left;
+	width: 25%;
+	padding-top: 5px;
+	font-size: 66px;
+	color: #ddd;
+	line-height: 100px;
+	text-align: right;
+}
+
+.form-bottom {
+	width: 100%;
+	float: left;
+	position: relative;
+	background-color: #f8f8f8;
+	padding: 15px;
+	border-radius: 5px;
+}
+.form-bottom>table {
+	margin-bottom: 0;
+}
+
+.nut-step {
+	width: 100%;
+	float: left;
+	position: relative;
+	margin-bottom: 20px;
+}
+.nut-step .btn-next {
+	float: right;
+}
+.nut-step .btn-previous {
+	float: left;
+}
+form .form-bottom textarea {
+	height: 100px;
+}
+
+form .form-bottom button.btn {
+	min-width: 105px;
+}
+
+form .form-bottom .input-error {
+	border-color: #19b9e7;
+}
+
+form.registration-form fieldset {
+	display: none;
+}
+
+
+/***** Media queries *****/
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+@media (max-width: 767px) {
+	
+	.navbar { padding-top: 0; }
+	.navbar.navbar-no-bg { background: #333; background: rgba(51, 51, 51, 0.9); }
+	.navbar-brand { height: 60px; margin-left: 15px; }
+	.navbar-collapse { border: 0; }
+	.navbar-toggle { margin-top: 12px; }
+	
+	.inner-bg { padding: 40px 0 110px 0; }
+	.top-content .top-big-link { margin-top: 25px; }
+	.top-content .top-big-link a.btn { margin-top: 10px; }
+	
+	.form-bottom { padding-bottom: 25px; }
+	form .form-bottom button.btn { margin-bottom: 5px; }
+
+}
+
+@media (max-width: 415px) {
+	
+	h1, h2 { font-size: 32px; }
+
+}
+
+
+/* Retina-ize images/icons */
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) {
+	
+	/* logo */
+    .navbar-brand {
+    	background-image: url(../img/logo@2x.png) !important; background-repeat: no-repeat !important; background-size: 123px 49px !important;
+    }
+	
+}
+.text-center-smail {
+	font-size: 12px;
+	color: rgba(49,163,68,1);
+	text-align: center;
+	margin-bottom: 20px;
+}

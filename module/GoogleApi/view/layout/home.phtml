@@ -1,0 +1,302 @@
+ 
+<!DOCTYPE html>
+<html lang="en" data-ng-app="demoPolyglot">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<?php echo $this->headTitle($data_setting['seo_title']) ?>
+        <meta name='keywords' content='Report 1.0' />
+        <meta name='description' content='Report 1.0' /> 
+        <!-- Bootstrap -->
+
+        <?php
+        echo $this->headLink(array(
+                    'rel' => 'shortcut icon',
+                    'type' => 'image/vnd.microsoft.icon',
+                    'href' => 'img/favicon.ico'
+                ))->
+                prependStylesheet($this->basePath() . '/home/css/dollar.css')->
+                prependStylesheet($this->basePath() . '/home/css/animate.css')->
+                prependStylesheet($this->basePath() . '/home/css/drawer.css')->
+                // ->prependStylesheet($this->basePath() . '/home/css/polyglot-language-switcher-2.css')
+                prependStylesheet($this->basePath() . '/home/css/font-awesome.min.css')->
+                prependStylesheet($this->basePath() . '/home/css/bootstrap-select.min.css')->
+                prependStylesheet($this->basePath() . '/home/css/bootstrap.min.css')
+        ?>
+		<link rel="stylesheet" href="/home/css/intlTelInput.css" />
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+              <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+              <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif]-->
+
+        <!-- Scripts -->
+        <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+         
+        <?php
+        echo $this->headScript()->prependFile($this->basePath() . '/home/js/main.js')->
+                // ->prependFile($this->basePath() . '/home/js/main.js')
+               
+                prependFile($this->basePath() . '/admin-news/js/form-validation.js')->
+				prependFile($this->basePath() . '/home/js/intlTelInput.min.js')->
+                prependFile($this->basePath() . '/admin-news/js/frameword.min.js')->			
+                prependFile($this->basePath() . '/admin-news/js/formValidation.min.js')->
+               // prependFile($this->basePath() . '/admin-news/js/bootstrap-select.js')->			    
+                prependFile($this->basePath() . '/home/js/jquery.appear.js')->
+                prependFile($this->basePath() . '/home/js/jquery.drawer.js')->
+                prependFile($this->basePath() . '/home/js/iscroll-min.js')->
+                prependFile($this->basePath() . '/home/js/bootstrap-select.js')->
+                prependFile($this->basePath() . '/home/js/bootstrap.min.js');
+        if ($_SERVER['HTTP_HOST'] != DOMAIN_DIR) {
+            echo '<script src="/home/js/config-browser.js"></script>';
+        }
+        ?>    
+        
+       
+	 
+    </head>
+
+    
+
+
+    <body    class="drawer drawer-left drawer-navbar drawer-fixed">
+
+        <header role="banner">
+            <div class="drawer-header">
+                <button type="button" class="drawer-toggle drawer-hamburger">
+                    <span class="sr-only">toggle navigation</span> <span
+                        class="drawer-hamburger-icon"></span>
+                </button>
+            </div>
+            <div class="drawer-main drawer-navbar-default">
+                <nav class="drawer-nav" role="navigation">
+                    <div class="container">
+                        <div class="drawer-brand">
+                            <a href="<?php echo WEBPATH ?>"> <img
+                                    src="<?php echo WEBPATH.'/upload/'.$data_setting['logo']; ?>" alt="">
+                            </a>
+                        </div>
+
+
+
+                        <ul class="drawer-menu drawer-menu-top">
+                            <li class="drawer-menu-item dropdown drawer-dropdown flags-menu">
+                                <a href="#" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><img
+                                        src="<?php echo WEBPATH ?>/home/images/flags/vn.png" alt="">VietNam
+                                    <span class="caret"></span></a>
+                                <ul class="drawer-submenu dropdown-menu" role="menu">
+                                    <li class="drawer-submenu-item"><a href="#"><img
+                                                src="<?php echo WEBPATH ?>/home/images/flags/vn.png" alt="">VietNam</a></li>
+                                    <li class="drawer-submenu-item"><a href="#"><img
+                                                src="<?php echo WEBPATH ?>/home/images/flags/us.png" alt="">US</a></li>
+                                </ul>
+                            </li>
+                            <?php
+                            if ($full_name == NULL) {
+                                ?>
+                                <li
+                                    class="drawer-menu-item dropdown drawer-dropdown-hover"><a
+                                        href="/Signin" data-toggle="modal"
+                                        data-target="">Sign In</a></li>
+                                <li class="drawer-menu-item dropdown drawer-dropdown-hover"><a
+                                        href="/Signup">Sign Up</a></li>
+
+                                <?php
+                            }             // end not login
+                            else {
+                                echo '<a href="/Signup">Hello, ' . $full_name . ',</a><a href="' . WEBPATH . '/users/logout">Logout</a>';
+                            }
+                            ?>
+
+
+                        </ul>
+
+                        <ul class="drawer-menu drawer-menu-bottom">
+                            <?php
+                            if (!empty($catalog)) {
+                                foreach ($catalog as $key => $value) {
+                                    ?>
+                                    <li class="drawer-menu-item"><a
+                                            href="<?php echo WEBPATH . '/' . $value['alias'] . '.mp' ?>"><?php echo $value['name'] ?></a></li>
+                                        <?php
+                                    }
+                                } // end if
+                                ?>
+                                
+                                  <li class="drawer-menu-item"><a href="<?php echo WEBPATH ?>/paypal-in-moneypoint">PAYPAL HOME DELIVERY TRANSFER</a></li>   
+                                  <!-- PAYPAL TRANSFER HOME DELIVERY   -->             
+                                
+                        </ul>
+
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Please Login</h4>
+                    </div>
+                    <div class="modal-body login">
+                        <form>
+                            <div class="form-group">
+                                <i class="fa fa-user"></i> <input type="name"
+                                                                  class="form-control input-lg" id="username" required
+                                                                  placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <i class="fa fa-lock"></i> <input type="password"
+                                                                  class="form-control input-lg" id="password" required
+                                                                  placeholder="Password">
+                            </div>
+                            <div class="checkbox">
+                                <label> <input type="checkbox"> Remember me
+                                </label>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="col-md-3 col-sm-12 col-xs-12 btn-login">
+                                    <button type="submit" class="btn btn-default btn-lg">Sign in</button>
+                                </div>
+                                <div class="col-md-9 col-sm-12 col-xs-12 form-group forgot">
+                                    <p class="help-block">
+                                        <a href="#">Forgot Password?</a>
+                                    </p>
+                                    <p class="help-block">
+                                        Don't have an account? <a href="register.html">Register here.</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <?php echo $this->content ?>
+
+
+
+        <!--Start of Zopim Live Chat Script-->
+       <?php echo $data_setting['suport']?>
+        <!--End of Zopim Live Chat Script-->
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-xs-12">
+                        <div class=" col-md-12 footer-contact">
+                            <ul class="list-contac">
+                                <li><a href="<?php echo WEBPATH ?>/contact">Contacts</a></li>
+                                <li><a href="#">Support</a></li>
+                                <li><a href="#">Terms and Conditions</a></li>
+                                <li><a href="#">FAQ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12 footer-contact">
+                        <div class="fb-page"
+                             data-share="true"
+                             data-show-faces="true"
+                             data-href="https://www.facebook.com/MoneyPointAsia"
+                             data-width="400" data-height="300" 
+                             data-small-header="true"
+                             data-adapt-container-width="true" 
+                             data-hide-cover="false"
+                             data-show-facepile="true" 
+                             data-hide-cover="false"
+                             data-show-facepile="false" 
+                             data-show-posts="false"
+                             >
+                            <div class="fb-xfbml-parse-ignore">
+                                <blockquote cite="https://www.facebook.com/MoneyPointAsia">
+                                    <a href="https://www.facebook.com/MoneyPointAsia">MoneyPoint</a>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div> <!-- facebook -->
+
+                    <div
+                        class="fb-like"
+                        data-share="true"
+                        data-width="450"
+                        data-show-faces="true">
+                    </div>
+
+
+                </div>
+                <style>.panel-heading {  background: #d0e9c6; }</style>
+
+                 <div class="row"> 
+	                <div class="panel-body   panel-heading">
+	                    <h4><i class="fa fa-thumb-tack"></i> Our office</h4>
+	                    <address>
+	                        <strong>Digital Media Invest Group Ltd.Co.</strong><br>
+	                       <strong> Address: </strong> Na Poříčním právu 1914/6, Nové Město, 128 00 Praha 2<br>                      
+	                        <!--<i class="fa fa-phone-square"></i> + 840485856511 -->
+	                    </address>
+	                </div>
+                 </div><!-- end row -->
+
+
+
+                <div class="row">
+                    <div class="col-md-3 footer-copy">
+                        <p><?php echo $data_setting['footer']?></p>
+                    </div>
+                    <div class="col-md-9 footer-nav">
+                        <ol class="breadcrumb">
+                            <li><a href="#">CZECH REPUBLIC</a></li>
+                            <li><a href="#">GERMANY</a></li>
+                            <li><a class="#">MONGOLIA</a></li>
+                            <li><a class="#">PHILIPPINES</a></li>
+                            <li><a class="#">SLOVAKIA</a></li>
+                            <li><a class="#">SWEDEN</a></li>                            
+                            <li><a class="#">UNITED KINGDOM</a></li>
+                            <li><a class="#">VIETNAM</a></li>
+                        </ol>
+                    </div>
+                    <div class="col-xs-12 footer-more">
+                        <p>
+                            Our website uses the cookies. These cookies allow us to
+                            distinguish you from other users of the website which helps us to
+                            provide you with a good experience when you browse our website and
+                            allows us to improve our site <a href="#">Got It</a>, <a href="#">Learn
+                                More</a>.
+                        </p>
+                    </div>
+                </div><!-- end row -->
+            </div>
+        </footer>
+
+        <!-- Go To Top Link -->
+        <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+
+
+
+    </body>
+</html>
+

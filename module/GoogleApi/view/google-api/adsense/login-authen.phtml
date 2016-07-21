@@ -1,0 +1,14 @@
+  <?php  
+# ==================View Html===============================
+
+echo  '<h3> AdSense Management API </h3>';
+
+echo '<div><div class="request">';
+if (isset($authUrl)) {
+	echo '<a class="login" href="' . $authUrl . '">Connect Me!</a>';
+} else {
+	echo '<a class="logout" href="?logout">Logout</a>';
+};
+echo '</div>';
+
+ ?>

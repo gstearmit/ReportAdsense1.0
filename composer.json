@@ -1,0 +1,43 @@
+{
+    "name": "zendframework/skeleton-application",
+    "description": "Skeleton Application for ZF2",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "framework",
+        "zf2", 
+        "zendframework2",
+        "Zend Users Module",
+        "ZF2 Auth",
+        "Users Module"
+         
+    ],
+    "homepage": "http://framework.zend.com/",
+    "require": {
+        "php": ">=5.5",
+        "zendframework/zendframework": "~2.5",
+        "google/apiclient": "1.0.*@beta",
+        "san/san-session-toolbar": "^1.0",
+        "aist/aist-git-tools": "dev-master",
+        "snapshotpl/zf-snap-google-adsense": "1.*",
+        "socalnick/scn-social-auth": "1.*" ,
+        "doctrine/doctrine-orm-module": "0.7.*",
+         "zf-commons/zfc-user": "1.4.*",
+         "kaushalkishorejaiswal/users":"dev-master"
+    },
+     "require-dev": {
+        "phpunit/phpunit": "5.3.*",
+        "squizlabs/php_codesniffer": "~2.3",
+        "codeception/codeception": "2.2.*", 
+        "zendframework/zend-developer-tools": "dev-master",
+        "snapshotpl/zf-snap-event-debugger": "1.*",
+        "jhuet/zdt-logger-module": "0.3"
+      },
+      "autoload": {
+        "files": ["/google/apiclient/src/Google/autoload.php"]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-v1-master": "1.1.x-dev"
+        }
+    }
+}

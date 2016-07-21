@@ -1,0 +1,150 @@
+/***
+{
+"web":
+  {
+   "client_id":"769901707687-voqvdkum3fv6dqjnc5fr0ujha8bc61vk.apps.googleusercontent.com",
+   "project_id":"report001-hp",
+   "auth_uri":"https://accounts.google.com/o/oauth2/auth",
+   "token_uri":"https://accounts.google.com/o/oauth2/token",
+   "auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
+   "client_secret":"iZ0YH1nmTRU6cw6E8x28SKl2",
+   "redirect_uris":["http://localhost:8090/google-api/login-authen"],
+   "javascript_origins":["http://localhost:8090"]
+   }
+   }
+***/
+
+
+
+================================================================================
+Listing all AdSense accounts
+================================================================================
+Account with ID "pub-9602082657924959" and name "anh thu" was found.
+
+================================================================================
+Displaying AdSense account tree for pub-9602082657924959
+================================================================================
+Account with ID "pub-9602082657924959" and name "anh thu" was found.
+
+================================================================================
+Listing all ad clients for account pub-9602082657924959
+================================================================================
+Ad client for product "GMOB" with ID "ca-app-pub-9602082657924959" was found.
+Ad client for product "AFC" with ID "ca-pub-9602082657924959" was found.
+
+================================================================================
+Listing all ad units for ad client ca-pub-9602082657924959
+================================================================================
+Ad unit with code "7500742828", name "336x280" and status "NEW" was found.
+
+================================================================================
+Listing all custom channels for ad unit ca-pub-9602082657924959:7500742828
+================================================================================
+No custom channels found.
+
+================================================================================
+Listing all custom channels for ad client ca-pub-9602082657924959
+================================================================================
+No custom channels found.
+
+No custom channels found, unable to run dependant example.================================================================================
+Listing all URL channels for ad client ca-pub-9602082657924959
+================================================================================
+No URL channels found.
+
+================================================================================
+Running report for ad client ca-pub-9602082657924959
+================================================================================
+No rows returned.
+
+================================================================================
+Running paged report for ad client ca-pub-9602082657924959
+================================================================================
+No rows returned.
+================================================================================
+Running report for ad client ca-pub-9602082657924959, and filling missing dates
+================================================================================
+No rows returned.
+
+================================================================================
+Running reports for ad client ca-pub-9602082657924959, and collating data
+================================================================================
+Results for last week (2016-07-12 to 2016-07-18) vs previous week (2016-07-05 to 2016-07-11).
+
+================================================================================
+Listing all saved reports for account pub-9602082657924959
+================================================================================
+No saved reports found.
+
+No saved reports found, unable to run dependant example.================================================================================
+Listing all saved ad styles for account pub-9602082657924959
+================================================================================
+No saved ad styles found.
+
+================================================================================
+Listing all alerts for account pub-9602082657924959
+================================================================================
+Alert id "GRAYLISTED_PUBLISHER" with severity "SEVERE" and type "GRAYLISTED_PUBLISHER" was found.
+
+================================================================================
+Listing all dimensions for user
+================================================================================
+Dimension id "AD_CLIENT_ID" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "AD_FORMAT_CODE" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "AD_FORMAT_NAME" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "AD_UNIT_CODE" for product(s): [GMOB, AFF, AFMC, AFMS, AFC, AFMAC] was found.
+Dimension id "AD_UNIT_ID" for product(s): [GMOB, AFF, AFMC, AFMS, AFC, AFMAC] was found.
+Dimension id "AD_UNIT_NAME" for product(s): [GMOB, AFF, AFMC, AFMS, AFC, AFMAC] was found.
+Dimension id "AD_UNIT_SIZE_CODE" for product(s): [GMOB, AFF, AFMC, AFMS, AFC, AFMAC] was found.
+Dimension id "AD_UNIT_SIZE_NAME" for product(s): [GMOB, AFF, AFMC, AFMS, AFC, AFMAC] was found.
+Dimension id "APP_ID" for product(s): [GMOB] was found.
+Dimension id "APP_NAME" for product(s): [GMOB] was found.
+Dimension id "APP_PLATFORM" for product(s): [GMOB] was found.
+Dimension id "BID_TYPE_CODE" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "BID_TYPE_NAME" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "BUYER_NETWORK_ID" for product(s): [GMOB, AFF, AFG, AFC, AFMAC] was found.
+Dimension id "BUYER_NETWORK_NAME" for product(s): [GMOB, AFF, AFG, AFC, AFMAC] was found.
+Dimension id "COUNTRY_CODE" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "COUNTRY_NAME" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "CREATIVE_SIZE_CODE" for product(s): [AFF, AFV, AFG, AFMC, AFMS, AFC, AFMAC] was found.
+Dimension id "CREATIVE_SIZE_NAME" for product(s): [AFF, AFV, AFG, AFMC, AFMS, AFC, AFMAC] was found.
+Dimension id "CUSTOM_CHANNEL_CODE" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "CUSTOM_CHANNEL_ID" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "CUSTOM_CHANNEL_NAME" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "DATE" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "DOMAIN_NAME" for product(s): [AFMC, AFC, AFMAC, AFD] was found.
+Dimension id "MONTH" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "OWNED_SITE_DOMAIN_NAME" for product(s): [AFC] was found.
+Dimension id "OWNED_SITE_ID" for product(s): [AFC] was found.
+Dimension id "PLATFORM_TYPE_CODE" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "PLATFORM_TYPE_NAME" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "PRODUCT_CODE" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "PRODUCT_NAME" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "TARGETING_TYPE_CODE" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "TARGETING_TYPE_NAME" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Dimension id "URL_CHANNEL_ID" for product(s): [AFV, AFG, AFMC, AFC, AFMAC] was found.
+Dimension id "URL_CHANNEL_NAME" for product(s): [AFV, AFG, AFMC, AFC, AFMAC] was found.
+Dimension id "WEEK" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+
+================================================================================
+Listing all metrics for user
+================================================================================
+Metric id "AD_REQUESTS" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "AD_REQUESTS_COVERAGE" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "AD_REQUESTS_CTR" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "AD_REQUESTS_RPM" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "CLICKS" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "COST_PER_CLICK" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "EARNINGS" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "INDIVIDUAL_AD_IMPRESSIONS" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "INDIVIDUAL_AD_IMPRESSIONS_CTR" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "INDIVIDUAL_AD_IMPRESSIONS_RPM" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "MATCHED_AD_REQUESTS" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "MATCHED_AD_REQUESTS_CTR" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "MATCHED_AD_REQUESTS_RPM" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "PAGE_VIEWS" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "PAGE_VIEWS_CTR" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "PAGE_VIEWS_RPM" for product(s): [AFF, AFV, AFG, AFMC, AFMS, GMOB, AFC, AFMAC, AFMAS, AFS, AFD] was found.
+Metric id "REACHED_AD_REQUESTS_MATCH_RATE" for product(s): [GMOB] was found.
+Metric id "REACHED_AD_REQUESTS_RPM" for product(s): [GMOB] was found.
+Metric id "REACHED_AD_REQUESTS_SHOW_RATE" for product(s): [GMOB] was found.

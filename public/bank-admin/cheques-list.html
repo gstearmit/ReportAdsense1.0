@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="demoPolyglot">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bank</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap-select.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/animate.css" media="screen">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+
+
+<header>
+
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="images/logo.png" alt=""></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">do ngo - Personal Account <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <div class="col-xs-12 accou-text">
+                            <p>Today is <a href="#">Wednesday, 18/11/2015 07:28 (GMT)</a></p>
+                            <p>You last signed on 18/11/2015 05:30 (GMT)</p>
+                        </div>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <form class="col-xs-12">
+                            <div class="form-group">
+                                <label for="exampleInputFile">Account Balance</label>
+                                <select class="form-control">
+                                  <option value="tk">129897329329392297392792</option>
+                                </select>
+                                <p class="help-block">Current   0.00</p>
+                                <p class="help-block">Available   0.00 <a href="#">more</a></p>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#">Log Out</a></li>
+        </ul>
+      </div><!--container -->
+    </nav>
+  
+</header>
+
+<section style="margin-top:20px;">
+  <div class="container">
+    <div class="row">
+        <!--Start cot left-->
+        <div class="col-md-4 col-left">
+            
+            <div class="col-xs-12 menu-left">  
+            
+                <ul class="nav">
+                    <li>
+                        <a href="#">
+                            Home
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Account Info
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="drawer-submenu dropdown-menu" role="menu">
+                            <li>
+                                <a href="account-details.html" tabindex="-1">
+                                    Account Details
+                                </a>
+                            </li>
+                            <li>
+                                <a href="account-balance.html" tabindex="-1">
+                                    Account Balance
+                                </a>
+                            </li>
+                            <li>
+                                <a href="account-tatement.html" tabindex="-1">
+                                    Account Statement
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Transactions
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="drawer-submenu dropdown-menu" role="menu">
+                            <li>
+                                <a href="pending.html" tabindex="-1">
+                                    Pending
+                                </a>
+                            </li>
+                            <li>
+                                <a href="holdbalance.html" tabindex="-1">
+                                    Bonuses Hold Balance
+                                </a>
+                            </li>
+                            <li>
+                                <a href="otherholdbalance.html" tabindex="-1">
+                                    Other Hold Balance
+                                </a>
+                            </li>
+                            <li>
+                                <a href="history.html" tabindex="-1">
+                                    History
+                                </a>
+                            </li>
+                            <li>
+                                <a href="cheques-list.html" tabindex="-1">
+                                    Cheques list
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Load Account
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="drawer-submenu dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Load by card
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Direct Cash Deposit
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    E-money
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Cash Money Transfer
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Cheques
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Currency Exchange
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Withdraw From Account
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="drawer-submenu dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Account Details
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Account Balance
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Account Statement
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Prepaid Cards
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="drawer-submenu dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Account Details
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Account Balance
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Account Statement
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Cash Money Transfer
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="drawer-submenu dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Account Details
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Account Balance
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Account Statement
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Settings
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="drawer-submenu dropdown-menu" role="menu">
+                            <li>
+                                <a href="verification.html" tabindex="-1">
+                                    Verification
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Мobile activation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Security
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    IP Security
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Notifications
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Change Auth Method
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Documents Uploading
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Send a service message
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Unsubscribe
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Attach Payment Cards
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Questionnaire
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            Help
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="drawer-submenu dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Account Details
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Account Balance
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" tabindex="-1">
+                                    Account Statement
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="drawer-menu-item">
+                        <a href="#">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="col-xs-12 banner-left">
+                    <img src="images/pay-butt.jpg" alt="">
+                </div>
+            </div>
+
+
+        </div>
+        <!--End cot left-->
+        
+
+        <!--Start Cot right-->
+        <div class="col-md-8 col-right">
+            <div class="col-xs-12 title-panel">
+                <h1>Cheques list</h1>
+                <ol class="breadcrumb">
+                      <li><a href="#">Home</a></li>
+                      <li><a href="#">Transactions</a></li>
+                      <li class="active">Cheques list</li>
+                </ol>
+            </div>
+            <div class="col-xs-12 box-main">
+
+                <h2>Transactions History</h2>
+                
+                <form class="form-inline form-statement">
+                    <div class="row-form">
+                        <label for="exampleInputName2">Select period</label>
+                        <div class="form-group">
+                            <select class="selectpicker form-control">
+                              <option> -- Select -- </option>
+                              <option>Today</option>
+                              <option>Yesterday</option>
+                              <option>Last week</option>
+                              <option>Last month</option>
+                              <option>Last 3 month</option>
+                              <option selected>All</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row-form">
+                        <div class="form-group">
+                            <label for="Range">or Date Range from</label>
+                            <input type="date" class="form-control" id="date">
+                        </div>
+                        <div class="form-group">
+                            <label for="Range">To</label>
+                            <input type="date" class="form-control" id="date">
+                        </div>
+                    </div>
+
+                    <div class="row-form">
+                        <div class="form-group">
+                            <label for="Range">Select Currency</label>
+                        </div>
+                        <div class="form-group">
+                            <select class="selectpicker form-control">
+                              <option>All</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Range">Transactions per page</label>
+                        </div>
+                        <div class="form-group">
+                            <select class="selectpicker form-control">
+                              <option>All</option>
+                              <option>5</option>
+                              <option>10</option>
+                              <option selected>30</option>
+                              <option>50</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row-form">
+                        <div class="form-group">
+                            <label for="Range">Cheque Status</label>
+                        </div>
+                        <div class="form-group">
+                            <select class="selectpicker form-control">
+                              <option>All</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success">Load</button>
+                    </div>
+
+
+                </form>
+
+                <p>Total 0 page</p>
+            
+                 <div id="no-more-tables">
+                    <table class="col-xs-12 table-bordered table-striped table-condensed cf">
+                        <thead class="cf">
+                            <tr>
+                                <th>ID</th>
+                                <th>Date (GMT)</th>
+                                <th class="numeric">Amount</th>
+                                <th class="numeric">Amount BC</th>
+                                <th class="numeric">Type</th>
+                                <th class="numeric">Info</th>                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-title="Currency:">not data</td>
+                                <td data-title="Date (GMT):">not data</td>
+                                <td data-title="Amount:" class="numeric">not data</td>
+                                <td data-title="Amount BC:" class="numeric">not data</td>
+                                <td data-title="Type:" class="numeric">not data</td>
+                                <td data-title="Info:" class="numeric">not data</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    
+                </div>
+
+                <div class="total-page">
+                    <p>Total 0 page</p>
+                </div>
+
+            </div>
+
+        </div>
+        <!--End Cot right-->
+    </div>
+  </div>
+</section>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 nav-footer">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 footer-cop">
+                <p>2009 - 2015 © Moneypoint Services</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- Go To Top Link -->
+    <!--<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>-->
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script> 
+        $('.dropdown').on('show.bs.dropdown', function(e){
+            $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+        });
+        $('.dropdown').on('hide.bs.dropdown', function(e){
+            $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+        });
+    </script>
+
+    <script src="js/iscroll-min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.appear.js"></script>
+
+    <script src="js/bootstrap-select.js"></script>
+
+
+  </body>
+</html>
