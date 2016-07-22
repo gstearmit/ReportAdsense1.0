@@ -93,9 +93,9 @@ class FillMissingDatesInReport {
     $fullDateFormat = "Y-m-d";
     $monthDateFormat = "Y-m";
 
-    $startDate = DateTimeImmutable::createFromFormat($fullDateFormat,
+    $startDate = \DateTimeImmutable::createFromFormat($fullDateFormat,
         $report['startDate']);
-    $endDate = DateTimeImmutable::createFromFormat($fullDateFormat,
+    $endDate = \DateTimeImmutable::createFromFormat($fullDateFormat,
         $report['endDate']);
 
     // Check if the results fit the requirements for this method.
@@ -139,7 +139,7 @@ class FillMissingDatesInReport {
           count($report['rows']) > $reportRowPos) {
         // Get current row of report and parse the date from it.
         $currentRow = $report['rows'][$reportRowPos];
-        $rowDate = DateTimeImmutable::createFromFormat($dateFormat,
+        $rowDate = \DateTimeImmutable::createFromFormat($dateFormat,
             $currentRow[0]);
         // Normalize date if using MONTH dimension.
         if ($report['headers'][0]['name'] == 'MONTH') {

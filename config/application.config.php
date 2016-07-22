@@ -32,7 +32,7 @@ return array(
     	  
     	'Users',
     	'ZF2FileUploadExamples',
-    	
+    	'FlashNotyMessenger',
     ),
 
     // These are various options for the listeners attached to the ModuleManager

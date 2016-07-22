@@ -59,7 +59,93 @@ return array(
         						)
         				)
         		),
-        		 
+        		
+        	# reportcallback	
+        		'Adsense-Report-Callback' => array(
+        				'type' => 'Segment',
+        				'options' => array(
+        						'route' => '/reportcallback',
+        						'constraints' => array( ),
+        						'defaults' => array(
+        								'__NAMESPACE__' => 'GoogleApi\Controller',
+        								'controller' => 'GoogleApi\Controller\AdsenseReport',
+        								'action' => 'reportcallback'
+        						)
+        				)
+        		),
+        		
+         # report-colum-chart	
+        		'Adsense-Report-Colum-Chart' => array(
+        				'type' => 'Segment',
+        				'options' => array(
+        						'route' => '/report-colum-chart',
+        						'constraints' => array( ),
+        						'defaults' => array(
+        								'__NAMESPACE__' => 'GoogleApi\Controller',
+        								'controller' => 'GoogleApi\Controller\AdsenseReport',
+        								'action' => 'reportcolumchart'
+        						)
+        				)
+        		),
+        		
+         
+          # report-geo-chart
+        		'Adsense-Report-Geo-Chart' => array(
+        				'type' => 'Segment',
+        				'options' => array(
+        						'route' => '/report-geo-chart',
+        						'constraints' => array( ),
+        						'defaults' => array(
+        								'__NAMESPACE__' => 'GoogleApi\Controller',
+        								'controller' => 'GoogleApi\Controller\AdsenseReport',
+        								'action' => 'reportgeochart'
+        						)
+        				)
+        		),
+        	
+       
+          # report-geo-chart
+        		'Adsense-Report-LineChart' => array(
+        				'type' => 'Segment',
+        				'options' => array(
+        						'route' => '/report-line-chart',
+        						'constraints' => array( ),
+        						'defaults' => array(
+        								'__NAMESPACE__' => 'GoogleApi\Controller',
+        								'controller' => 'GoogleApi\Controller\AdsenseReport',
+        								'action' => 'reportlinechart'
+        						)
+        				)
+        		),
+         	
+        # reportpiechart	 
+        	 'Adsense-Report-PieChart' => array(
+        				'type' => 'Segment',
+        				'options' => array(
+        						'route' => '/report-pie-chart',
+        						'constraints' => array( ),
+        						'defaults' => array(
+        								'__NAMESPACE__' => 'GoogleApi\Controller',
+        								'controller' => 'GoogleApi\Controller\AdsenseReport',
+        								'action' => 'reportpiechart'
+        						)
+        				)
+        		), 
+        		
+        # reporttablechart		 
+        	 'Adsense-Report-TableChart' => array(
+        				'type' => 'Segment',
+        				'options' => array(
+        						'route' => '/report-table-chart',
+        						'constraints' => array( ),
+        						'defaults' => array(
+        								'__NAMESPACE__' => 'GoogleApi\Controller',
+        								'controller' => 'GoogleApi\Controller\AdsenseReport',
+        								'action' => 'reporttablechart'
+        						)
+        				)
+        		), 
+        	 	
         ),
     		
     		
