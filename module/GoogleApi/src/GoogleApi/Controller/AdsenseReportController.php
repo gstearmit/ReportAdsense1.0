@@ -228,8 +228,17 @@ class AdsenseReportController extends AbstractActionController {
 	}
 	
 	
-	public function reportcallbackAction() {
+	public function reportcallbackAction() 
+	{
 	
+		# Noty-alert
+		$this->flashMessenger()->addSuccessMessage('Success message, bravo!');
+		$this->flashMessenger()->addErrorMessage('Error with system, contact us.');
+		$this->flashMessenger()->addInfoMessage('Info message, to do whatever...');
+		$this->flashMessenger()->addWarningMessage('Warning message to be careful.'); 
+		# End Noty Alert
+		
+		
 		# http://localhost:8090/file-upload-examples/multi-html5
 	
 		// https://developers.google.com/api-client-library/php/auth/web-app
@@ -445,7 +454,7 @@ class AdsenseReportController extends AbstractActionController {
 				
 			# End
 				
-			# $_SESSION['access_token'] = $client->getAccessToken();
+			$_SESSION['access_token'] = $client->getAccessToken();
 	
 			echo '</pre>';
 			echo '</div>';
@@ -519,7 +528,6 @@ class AdsenseReportController extends AbstractActionController {
 				@file_put_contents ( TOKEN_FILENAME, $_SESSION ['access_token'] );
 			}
 			// $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-			// http://localhost:8082/adsense-sample.php
 			$redirect = 'http://localhost:8090/reportcallback';
 			header ( 'Location: ' . filter_var ( $redirect, FILTER_SANITIZE_URL ) );
 			exit ();

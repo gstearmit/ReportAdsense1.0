@@ -91,9 +91,11 @@ $userId     =  $session->offsetGet('userId');
                           <li class=""><a href="<?php echo WEBPATH; ?>/users/register"><?php echo $this->translate('register') ?></a></li>
                         <?php }else {  # $full_name ?>
                              <li class="active"><a href="#" alt="<?php echo $userName;?>" > Hello ,<?php echo $full_name; ?></a></li>
+                             <li class=""><a href="<?php echo WEBPATH; ?>/dashboard-user"><?php echo $this->translate('Set Param of ADSENSE') ?></a></li>
                              
-                             <li class=""><a href="<?php echo WEBPATH; ?>/set-param-adsense"><?php echo $this->translate('Set Param of ADSENSE') ?></a></li>
-                             
+                             <!--  
+                               <li class=""><a href="<?php echo WEBPATH; ?>/set-param-adsense"><?php echo $this->translate('Set Param of ADSENSE') ?></a></li>
+                             -->
                              <li class="pa-right"><a href="<?php echo WEBPATH; ?>/users/logout"><?php echo $this->translate('Logout') ?></a></li>
                         <?php } # End $fire_name?>
                     </ul>

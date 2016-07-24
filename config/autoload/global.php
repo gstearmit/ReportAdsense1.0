@@ -11,6 +11,7 @@
  * file.
  */
 @session_name('RPMP');
+define('Pr_UserId', 13578);
 return array(
 		/*
     'db' => array(

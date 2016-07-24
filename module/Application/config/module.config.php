@@ -42,8 +42,8 @@ return array(
                 		'route'    => '/application',
                 		'defaults' => array(
                 				'__NAMESPACE__' => 'GoogleApi\Controller',
-            					'controller' => 'GoogleApi\Controller\Adsense',
-                				'action'        => 'loginAuthen',
+            					'controller' => 'GoogleApi\Controller\AdsenseReport',
+                				'action'        => 'reportcallback',  
                 		),
                 ),
                 'may_terminate' => true,
