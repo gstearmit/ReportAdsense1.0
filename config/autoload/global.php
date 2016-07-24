@@ -12,6 +12,7 @@
  */
 @session_name('RPMP');
 define('Pr_UserId', 13578);
+define('Hash_token', 'Phuchoang2016');
 return array(
 		/*
     'db' => array(

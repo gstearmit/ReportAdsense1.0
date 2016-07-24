@@ -24,21 +24,26 @@ class GeneratePieChart  {
     // Retrieve report.
     $report = $service->reports
         ->generate($startDate, $endDate, $optParams);
-    $data = $report['rows'];
-    // We need to convert the metrics to numeric values for the chart.
-    foreach ($data as &$row) {
-      $row[1] = (int)$row[1];
-    }
-    $data = json_encode($data);
-    $columns = array(
-      array('string', 'Ad client id'),
-      array('number', 'Ad requests')
-    );
-    $type = 'PieChart';
-    $options = json_encode(
-      array('title' => 'Ads requests per ad client id')
-    );
-    print generateChartHtml($data, $columns, $type, $options);
+		    $data = $report['rows'];
+		    // We need to convert the metrics to numeric values for the chart.
+		if(!empty($data)) {
+		    foreach ($data as &$row) {
+		      $row[1] = (int)$row[1];
+		    }
+		    $data = json_encode($data);
+		    $columns = array(
+		      array('string', 'Ad client id'),
+		      array('number', 'Ad requests')
+		    );
+		    $type = 'PieChart';
+		    $options = json_encode(
+		      array('title' => 'Ads requests per ad client id')
+		    );
+		    print generateChartHtml($data, $columns, $type, $options);
+		 } else  {
+		    	print "No Data Report Geo Chart";
+		    	echo "</br>";
+		    }    
   }
 }
 

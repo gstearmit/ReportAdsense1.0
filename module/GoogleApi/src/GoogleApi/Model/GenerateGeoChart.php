@@ -27,17 +27,22 @@ class GenerateGeoChart  {
              ->generate($startDate, $endDate, $optParams);
     $data = $report['rows'];
     // We need to convert the metrics to numeric values for the chart.
-    foreach ($data as &$row) {
-      $row[1] = (int)$row[1];
-    }
-    $data = json_encode($data);
-    $columns = array(
-      array('string', 'Country name'),
-      array('number', 'Page views'),
-    );
-    $type = 'GeoChart';
-    $options = json_encode(array());
-    print generateChartHtml($data, $columns, $type, $options);
+    if(!empty($data)) {
+	    foreach ($data as &$row) {
+	      $row[1] = (int)$row[1];
+	    }
+	    $data = json_encode($data);
+	    $columns = array(
+	      array('string', 'Country name'),
+	      array('number', 'Page views'),
+	    );
+	    $type = 'GeoChart';
+	    $options = json_encode(array());
+	    print generateChartHtml($data, $columns, $type, $options);
+     } else  {
+	    	print "No Data Report Geo Chart";
+	    	echo "</br>";
+	    }  
   }
 }
 

@@ -28,21 +28,27 @@ class GenerateTableChart   {
              ->generate($startDate, $endDate, $optParams);
     $data = $report['rows'];
     // We need to convert the metrics to numeric values for the chart.
-    foreach ($data as &$row) {
-      $row[1] = (int)$row[1];
-      $row[2] = (int)$row[2];
-      $row[3] = (int)$row[3];
-    }
-    $data = json_encode($data);
-    $columns = array(
-      array('string', 'Ad client id'),
-      array('number', 'Ad requests'),
-      array('number', 'Matched ad requests'),
-      array('number', 'Individual ad impressions')
-    );
-    $type = 'Table';
-    $options = json_encode(array());
-    print generateChartHtml($data, $columns, $type, $options);
+    if(!empty($data)) {
+		    foreach ($data as &$row) {
+		      $row[1] = (int)$row[1];
+		      $row[2] = (int)$row[2];
+		      $row[3] = (int)$row[3];
+		    }
+		    $data = json_encode($data);
+		    $columns = array(
+		      array('string', 'Ad client id'),
+		      array('number', 'Ad requests'),
+		      array('number', 'Matched ad requests'),
+		      array('number', 'Individual ad impressions')
+		    );
+		    $type = 'Table';
+		    $options = json_encode(array());
+		    print generateChartHtml($data, $columns, $type, $options);
+		    
+	     } else  {
+		    	print "No Data Report Geo Chart";
+		    	echo "</br>";
+		    }    
   }
 }
 

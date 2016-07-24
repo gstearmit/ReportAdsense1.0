@@ -4,6 +4,7 @@ namespace GoogleApi\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\Session\Container;
 
 // require_once("Google/autoload.php");
 use Google_Client;
@@ -238,6 +239,20 @@ class AdsenseReportController extends AbstractActionController {
 		$this->flashMessenger()->addWarningMessage('Warning message to be careful.'); 
 		# End Noty Alert
 		
+		$dir_files_json  = dirname(dirname(dirname(dirname(dirname(__DIR__))))).'/files/';
+		
+		$session = new Container('User');
+		$userId    = $session->offsetGet('userId');
+		$userEmail = $session->offsetGet('userEmail');
+		$str = $userId.'-'.$userEmail.Hash_token;
+		$Token_key_user = md5($str);
+		$session->offsetSet('Token_key_user', $Token_key_user);
+		$name_json = $Token_key_user.'.json';
+		
+		$filename_client_json = $dir_files_json.$name_json;
+		
+		echo "name_json : ".$name_json;
+		echo "</br>";
 		
 		# http://localhost:8090/file-upload-examples/multi-html5
 	
@@ -251,13 +266,13 @@ class AdsenseReportController extends AbstractActionController {
 		// Be sure to replace the contents of client_secrets.json with your developer
 		// credentials.
 		
-			# tai khoan cez
+		# tai khoan cez
 		$filename_client = __DIR__ . '/../data/client_secret_248018190114-ikfifcdrsah8sbsr3qvh0otph9sgtphf.apps.googleusercontent.com.json';
-		 
-		if (file_exists ( $filename_client )) {
-			$client->setAuthConfigFile ( $filename_client );
+		  
+		if (file_exists ( $filename_client_json )) {
+			$client->setAuthConfigFile ( $filename_client_json );
 		} else {
-			die ( "Erro Get Client Secrets" );
+			die ( "Error Get Client Secrets" );
 		}
 	
 		// Create service.
@@ -484,10 +499,18 @@ class AdsenseReportController extends AbstractActionController {
 	
 	# reportcolumchart
 	public function reportcolumchartAction() {
-	
-		# http://localhost:8090/file-upload-examples/multi-html5
-	
-		// https://developers.google.com/api-client-library/php/auth/web-app
+		$dir_files_json  = dirname(dirname(dirname(dirname(dirname(__DIR__))))).'/files/';
+		
+		$session = new Container('User');
+		$userId    = $session->offsetGet('userId');
+		$userEmail = $session->offsetGet('userEmail');
+		$str = $userId.'-'.$userEmail.Hash_token;
+		$Token_key_user = md5($str);
+		$session->offsetSet('Token_key_user', $Token_key_user);
+		$name_json = $Token_key_user.'.json';
+		
+		$filename_client_json = $dir_files_json.$name_json;
+		
 		$authUrl = '';
 		// Set up authentication.
 		$client = new Google_Client ();
@@ -500,8 +523,8 @@ class AdsenseReportController extends AbstractActionController {
 		# tai khoan cez
 		$filename_client = __DIR__ . '/../data/client_secret_248018190114-ikfifcdrsah8sbsr3qvh0otph9sgtphf.apps.googleusercontent.com.json';
 			
-		if (file_exists ( $filename_client )) {
-			$client->setAuthConfigFile ( $filename_client );
+		if (file_exists ( $filename_client_json )) {
+			$client->setAuthConfigFile ( $filename_client_json );
 		} else {
 			die ( "Erro Get Client Secrets" );
 		}
@@ -715,10 +738,18 @@ class AdsenseReportController extends AbstractActionController {
 	
 	# report-geo-chart
 	public function reportgeochartAction() {
-	
-		# http://localhost:8090/file-upload-examples/multi-html5
-	
-		// https://developers.google.com/api-client-library/php/auth/web-app
+		$dir_files_json  = dirname(dirname(dirname(dirname(dirname(__DIR__))))).'/files/';
+		
+		$session = new Container('User');
+		$userId    = $session->offsetGet('userId');
+		$userEmail = $session->offsetGet('userEmail');
+		$str = $userId.'-'.$userEmail.Hash_token;
+		$Token_key_user = md5($str);
+		$session->offsetSet('Token_key_user', $Token_key_user);
+		$name_json = $Token_key_user.'.json';
+		
+		$filename_client_json = $dir_files_json.$name_json;
+		
 		$authUrl = '';
 		// Set up authentication.
 		$client = new Google_Client ();
@@ -731,8 +762,8 @@ class AdsenseReportController extends AbstractActionController {
 		# tai khoan cez
 		$filename_client = __DIR__ . '/../data/client_secret_248018190114-ikfifcdrsah8sbsr3qvh0otph9sgtphf.apps.googleusercontent.com.json';
 			
-		if (file_exists ( $filename_client )) {
-			$client->setAuthConfigFile ( $filename_client );
+		if (file_exists ( $filename_client_json )) {
+			$client->setAuthConfigFile ( $filename_client_json );
 		} else {
 			die ( "Erro Get Client Secrets" );
 		}
@@ -946,10 +977,18 @@ class AdsenseReportController extends AbstractActionController {
 	
 	
 	public function reportlinechartAction() {
-	
-		# http://localhost:8090/file-upload-examples/multi-html5
-	
-		// https://developers.google.com/api-client-library/php/auth/web-app
+		$dir_files_json  = dirname(dirname(dirname(dirname(dirname(__DIR__))))).'/files/';
+		
+		$session = new Container('User');
+		$userId    = $session->offsetGet('userId');
+		$userEmail = $session->offsetGet('userEmail');
+		$str = $userId.'-'.$userEmail.Hash_token;
+		$Token_key_user = md5($str);
+		$session->offsetSet('Token_key_user', $Token_key_user);
+		$name_json = $Token_key_user.'.json';
+		
+		$filename_client_json = $dir_files_json.$name_json;
+		
 		$authUrl = '';
 		// Set up authentication.
 		$client = new Google_Client ();
@@ -962,8 +1001,8 @@ class AdsenseReportController extends AbstractActionController {
 		# tai khoan cez
 		$filename_client = __DIR__ . '/../data/client_secret_248018190114-ikfifcdrsah8sbsr3qvh0otph9sgtphf.apps.googleusercontent.com.json';
 			
-		if (file_exists ( $filename_client )) {
-			$client->setAuthConfigFile ( $filename_client );
+		if (file_exists ( $filename_client_json )) {
+			$client->setAuthConfigFile ( $filename_client_json );
 		} else {
 			die ( "Erro Get Client Secrets" );
 		}
@@ -1107,6 +1146,18 @@ class AdsenseReportController extends AbstractActionController {
 	
 	
 	public function reportpiechartAction() { 
+		$dir_files_json  = dirname(dirname(dirname(dirname(dirname(__DIR__))))).'/files/';
+		
+		$session = new Container('User');
+		$userId    = $session->offsetGet('userId');
+		$userEmail = $session->offsetGet('userEmail');
+		$str = $userId.'-'.$userEmail.Hash_token;
+		$Token_key_user = md5($str);
+		$session->offsetSet('Token_key_user', $Token_key_user);
+		$name_json = $Token_key_user.'.json';
+		
+		$filename_client_json = $dir_files_json.$name_json;
+		
 		$authUrl = '';
 		// Set up authentication.
 		$client = new Google_Client ();
@@ -1119,8 +1170,8 @@ class AdsenseReportController extends AbstractActionController {
 		# tai khoan cez
 		$filename_client = __DIR__ . '/../data/client_secret_248018190114-ikfifcdrsah8sbsr3qvh0otph9sgtphf.apps.googleusercontent.com.json';
 			
-		if (file_exists ( $filename_client )) {
-			$client->setAuthConfigFile ( $filename_client );
+		if (file_exists ( $filename_client_json )) {
+			$client->setAuthConfigFile ( $filename_client_json );
 		} else {
 			die ( "Erro Get Client Secrets" );
 		} 
@@ -1256,6 +1307,19 @@ class AdsenseReportController extends AbstractActionController {
 	
 	
 	public function reporttablechartAction() {
+		$dir_files_json  = dirname(dirname(dirname(dirname(dirname(__DIR__))))).'/files/';
+		
+		$session = new Container('User');
+		$userId    = $session->offsetGet('userId');
+		$userEmail = $session->offsetGet('userEmail');
+		$str = $userId.'-'.$userEmail.Hash_token;
+		$Token_key_user = md5($str);
+		$session->offsetSet('Token_key_user', $Token_key_user);
+		$name_json = $Token_key_user.'.json';
+		
+		$filename_client_json = $dir_files_json.$name_json;
+		
+		
 		$authUrl = '';
 		// Set up authentication.
 		$client = new Google_Client ();
@@ -1268,8 +1332,8 @@ class AdsenseReportController extends AbstractActionController {
 		# tai khoan cez
 		$filename_client = __DIR__ . '/../data/client_secret_248018190114-ikfifcdrsah8sbsr3qvh0otph9sgtphf.apps.googleusercontent.com.json';
 			
-		if (file_exists ( $filename_client )) {
-			$client->setAuthConfigFile ( $filename_client );
+		if (file_exists ( $filename_client_json )) {
+			$client->setAuthConfigFile ( $filename_client_json );
 		} else {
 			die ( "Erro Get Client Secrets" );
 		}

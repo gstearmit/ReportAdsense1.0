@@ -68,37 +68,43 @@ class GenerateColumnChart  {
     $report = $service->reports
              ->generate($startDate, $endDate, $optParams);
     
-       echo "</br> ------------report --------------- </br> ";
-       echo "<pre>";
-       print_r($report);
-       echo "</pre>";
+//        echo "</br> ------------report --------------- </br> ";
+//        echo "<pre>";
+//        print_r($report);
+//        echo "</pre>";
 
      # Get C        
              
              
     $data = $report['rows'];
     // We need to convert the metrics to numeric values for the chart.
-    foreach ($data as &$row) {
-      $row[1] = (int)$row[1];
-      $row[2] = (int)$row[2];
-      $row[3] = (int)$row[3];
-      $row[4] = (int)$row[4];
-      $row[5] = (double)$row[5];
-    }
-    $data = json_encode($data);
-    $columns = array(
-      array('string', 'Month'),
-      array('number', 'Page views'),
-      array('number', 'Ad requests'),
-      array('number', 'Matched ad requests'),
-      array('number', 'Individual ad impressions'),
-      array('number', 'COST PER CLICK')
-    );
-    $type = 'ColumnChart';
-    $options = json_encode(
-      array('title' => 'Performances per month')
-    );
-    print generateChartHtml($data, $columns, $type, $options);
+    if(!empty($data)) {
+		    foreach ($data as &$row) {
+		      $row[1] = (int)$row[1];
+		      $row[2] = (int)$row[2];
+		      $row[3] = (int)$row[3];
+		      $row[4] = (int)$row[4];
+		      $row[5] = (double)$row[5];
+		    }
+		    $data = json_encode($data);
+		    $columns = array(
+		      array('string', 'Month'),
+		      array('number', 'Page views'),
+		      array('number', 'Ad requests'),
+		      array('number', 'Matched ad requests'),
+		      array('number', 'Individual ad impressions'),
+		      array('number', 'COST PER CLICK')
+		    );
+		    $type = 'ColumnChart';
+		    $options = json_encode(
+		      array('title' => 'Performances per month')
+		    );
+		    print generateChartHtml($data, $columns, $type, $options);
+      } # end not Empty
+      else  {
+      	print "No Data Report Column Chart";
+      	echo "</br>";
+      }
   }
 }
 

@@ -25,27 +25,33 @@ class GenerateLineChart {
     // Retrieve report.
     $report = $service->reports
         ->generate($startDate, $endDate, $optParams);
-    $data = $report['rows'];
-    // We need to convert the metrics to numeric values for the chart.
-    foreach ($data as &$row) {
-      $row[1] = (int)$row[1];
-      $row[2] = (int)$row[2];
-      $row[3] = (int)$row[3];
-      $row[4] = (int)$row[4];
-    }
-    $data = json_encode($data);
-    $columns = array(
-      array('string', 'Month'),
-      array('number', 'Page views'),
-      array('number', 'Ad requests'),
-      array('number', 'Matched ad requests'),
-      array('number', 'Individual ad impressions')
-    );
-    $type = 'LineChart';
-    $options = json_encode(
-      array('title' => 'Performances per month')
-    );
-    print generateChartHtml($data, $columns, $type, $options);
+    
+    if(!empty($data)) {
+		    $data = $report['rows'];
+		    // We need to convert the metrics to numeric values for the chart.
+		    foreach ($data as &$row) {
+		      $row[1] = (int)$row[1];
+		      $row[2] = (int)$row[2];
+		      $row[3] = (int)$row[3];
+		      $row[4] = (int)$row[4];
+		    }
+		    $data = json_encode($data);
+		    $columns = array(
+		      array('string', 'Month'),
+		      array('number', 'Page views'),
+		      array('number', 'Ad requests'),
+		      array('number', 'Matched ad requests'),
+		      array('number', 'Individual ad impressions')
+		    );
+		    $type = 'LineChart';
+		    $options = json_encode(
+		      array('title' => 'Performances per month')
+		    );
+		    print generateChartHtml($data, $columns, $type, $options);
+	  } else  {
+		    	print "No Data Report Line Chart";
+		    	echo "</br>";
+		    } 		    
   }
 }
 
