@@ -249,10 +249,14 @@ class AdsenseReportController extends AbstractActionController {
 		$session->offsetSet('Token_key_user', $Token_key_user);
 		$name_json = $Token_key_user.'.json';
 		
+		if($userEmail =='gstearmit@gmail.com') {
+			return $this->redirect()->toRoute('dashboard-user');
+		}
+		
 		$filename_client_json = $dir_files_json.$name_json;
 		
-		echo "name_json : ".$name_json;
-		echo "</br>";
+// 		echo "name_json : ".$name_json;
+// 		echo "</br>";
 		
 		# http://localhost:8090/file-upload-examples/multi-html5
 	
@@ -327,59 +331,28 @@ class AdsenseReportController extends AbstractActionController {
 	 
 	  # Start Taking Google 	
 	  
-		echo '<div class="container">
-				  <div class="row">
-				    <div class="col-sm-12">';
+		
 			 
 		if ($client->getAccessToken())
-		{ 
-			
-			echo '<ul class="list-group">
-				  <li class="list-group-item">';
-			       echo '<a class="login" href="' . WEBPATH . '/report-colum-chart"> Report Generate ColumnChart</a>'; 
-			echo '</li>';
-			echo '<li class="list-group-item">';
-			      echo '<a class="login" href="' . WEBPATH . '/report-geo-chart"> Report Generate GeoChart</a>';
-			echo '</li>';
-			
-			echo '<li class="list-group-item">';
-			      echo '<a class="login" href="' . WEBPATH . '/report-line-chart"> Report Generate LineChart</a>';
-			echo '</li>';
-			
-			echo '<li class="list-group-item">';
-		        	echo '<a class="login" href="' . WEBPATH . '/report-pie-chart"> Report Generate Pie Chart</a>';
-			echo '</li>';
-			
-			echo '<li class="list-group-item">';
-			       echo '<a class="login" href="' . WEBPATH . '/report-table-chart"> Report Generate Table Chart</a>';
-			echo '</li>'; 
-			 
-			
-			echo '</ul>';
-			
-			
-			echo '</div>';
+		{  
+			$getAccessToken = 1;
 			echo '<pre class="result">';
 	
 			# Start makeRequests($service);
-				
-			// 			@spl_autoload_register(function ($class_name) {
-			// 				# include __DIR__.'/../examples/' . $class_name . '.php';
-			// 			});
-			# include __DIR__.'/../examples/GetAllAccounts.php';
+			 
 			print "\n";
 				
-			$GetAllAccounts = new \GoogleApi\Model\GetAllAccounts;
-			$accounts = $GetAllAccounts::run($service, MAX_LIST_PAGE_SIZE);
+			$GetAllAccountsMP = new \GoogleApi\Model\GetAllAccountsMP;
+			$accounts = $GetAllAccountsMP::run($service, MAX_LIST_PAGE_SIZE);
 	
 			if (isset($accounts) && !empty($accounts)) {
 				// Get an example account ID, so we can run the following sample.
 				$exampleAccountId = $accounts[0]['id'];
 					
-				$GetAccountTree = new \GoogleApi\Model\GetAccountTree;
+				$GetAccountTree = new \GoogleApi\Model\GetAccountTreeMP;
 				$GetAccountTree::run($service, $exampleAccountId);
 					
-				$GetAllAdClients = new \GoogleApi\Model\GetAllAdClients;
+				$GetAllAdClients = new \GoogleApi\Model\GetAllAdClientsMP;
 				$adClients       = $GetAllAdClients::run($service, $exampleAccountId, MAX_LIST_PAGE_SIZE);
 					
 				if (isset($adClients) && !empty($adClients)) {
@@ -387,31 +360,37 @@ class AdsenseReportController extends AbstractActionController {
 					$exampleAdClient = end($adClients);
 					$exampleAdClientId = $exampleAdClient['id'];
 						
-					$GetAllAdUnits  = new \GoogleApi\Model\GetAllAdUnits;
-					$adUnits        = $GetAllAdUnits::run($service, $exampleAccountId, $exampleAdClientId, MAX_LIST_PAGE_SIZE);
+// 					$GetAllAdUnits  = new \GoogleApi\Model\GetAllAdUnits;
+// 					$adUnits        = $GetAllAdUnits::run($service, $exampleAccountId, $exampleAdClientId, MAX_LIST_PAGE_SIZE);
+					
+					# Get MP new 
+					$GetAllAdUnitsMP  = new \GoogleApi\Model\GetAllAdUnitsMP;
+					$adUnits          = $GetAllAdUnitsMP::run($service, $exampleAccountId, $exampleAdClientId, MAX_LIST_PAGE_SIZE);
+					
 					if (isset($adUnits) && !empty($adUnits)) {
 						// Get an example ad unit ID, so we can run the following sample.
 						$exampleAdUnitId = $adUnits[0]['id'];
 							
-						$GetAllCustomChannelsForAdUnit = new \GoogleApi\Model\GetAllCustomChannelsForAdUnit;
+						$GetAllCustomChannelsForAdUnit = new \GoogleApi\Model\GetAllCustomChannelsForAdUnitMP;
 						$GetAllCustomChannelsForAdUnit::run($service, $exampleAccountId, $exampleAdClientId, $exampleAdUnitId, MAX_LIST_PAGE_SIZE);
 					} else {
-						print 'No ad units found, unable to run dependant example.';
+						die('No ad units found, unable to run dependant example.'); 
 					}
 						
-					$GetAllCustomChannels  = new \GoogleApi\Model\GetAllCustomChannels;
+					$GetAllCustomChannels  = new \GoogleApi\Model\GetAllCustomChannelsMP;
 					$customChannels        = $GetAllCustomChannels::run($service, $exampleAccountId,  $exampleAdClientId, MAX_LIST_PAGE_SIZE);
 					if (isset($customChannels) && !empty($customChannels)) {
 						// Get an example ad unit ID, so we can run the following sample.
 						$exampleCustomChannelId = $customChannels[0]['id'];
 							
-						$GetAllAdUnitsForCustomChannel = new \GoogleApi\Model\GetAllAdUnitsForCustomChannel;
+						$GetAllAdUnitsForCustomChannel = new \GoogleApi\Model\GetAllAdUnitsForCustomChannelMP;
 						$GetAllAdUnitsForCustomChannel::run($service, $exampleAccountId,  $exampleAdClientId, $exampleCustomChannelId, MAX_LIST_PAGE_SIZE);
 					} else {
-						print 'No custom channels found, unable to run dependant example.';
+						echo 'No custom channels found, unable to run dependant example.';
+						echo  '</br>';
 					}
 						
-					$GetAllUrlChannels = new \GoogleApi\Model\GetAllUrlChannels;
+					$GetAllUrlChannels = new \GoogleApi\Model\GetAllUrlChannelsMP;
 					$GetAllUrlChannels::run($service, $exampleAccountId, $exampleAdClientId, MAX_LIST_PAGE_SIZE);
 	
 					$GenerateReport = new \GoogleApi\Model\GenerateReport;
@@ -462,36 +441,30 @@ class AdsenseReportController extends AbstractActionController {
 				'No accounts found, unable to run dependant examples.';
 			}
 				
-			$GetAllDimensions = new \GoogleApi\Model\GetAllDimensions;
-			$GetAllDimensions::run($service);
-			$GetAllMetrics = new \GoogleApi\Model\GetAllMetrics;
-			$GetAllMetrics::run($service);
+// 			$GetAllDimensions = new \GoogleApi\Model\GetAllDimensions;
+// 			$GetAllDimensions::run($service);
+// 			$GetAllMetrics = new \GoogleApi\Model\GetAllMetrics;
+// 			$GetAllMetrics::run($service);
 				
 			# End
 				
 			$_SESSION['access_token'] = $client->getAccessToken();
 	
 			echo '</pre>';
-			echo '</div>';
+			 
 			
 	} else 
-	{ 
-		# Neu Chua co Token thi ket noi den api google de lay token
-		echo '<div><div class="request">';
-		if (isset($authUrl)) {
-			echo '<a class="login" href="' . $authUrl . '">Connect Me!</a>';
-		} else {
-			echo '<a class="logout" href="?logout">Logout</a>';
-		};
-		echo "</div></div>";
+	{  
+		$getAccessToken = 0; 
 	}	
-	
-	echo "</div></div></div>"; # end Container
+	 
+	 
 	 
 	$view = new ViewModel ( array (
 			'authUrl' => $authUrl,
 			'client' => $client,
 			'filename_client'=>$filename_client,
+			'getAccessToken'=>$getAccessToken
 	) );
 	return $view;
 	}

@@ -366,9 +366,9 @@ class AdsenseController extends AbstractActionController {
 					$res ['id'] = $file->getId ();
 					$files [] = $res;
 				}
-				echo "<pre>";
-				print_r ( $files );
-				echo "</pre>";
+// 				echo "<pre>";
+// 				print_r ( $files );
+// 				echo "</pre>";
 			}
 		} else {
 			// $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/oauth2callback.php';

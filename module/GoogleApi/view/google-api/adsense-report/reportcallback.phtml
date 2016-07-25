@@ -1,0 +1,186 @@
+<?php 
+use Zend\Session\Container;
+$session = new Container('User');
+$first_name =  $session->offsetGet('first_name');
+$last_name  =  $session->offsetGet('last_name');
+$full_name  =  $first_name . ' ' . $last_name;
+$userName   =  $session->offsetGet('userEmail');
+$userId     =  $session->offsetGet('userId');
+
+$session_GetAllAccounts = new Container('AllAccounts');
+if ($session_GetAllAccounts->offsetExists('Accounts_id')) {
+	$Accounts_id   =  $session_GetAllAccounts->offsetGet('Accounts_id');
+}
+if ($session_GetAllAccounts->offsetExists('Accounts_name')) {
+	$Accounts_name   =  $session_GetAllAccounts->offsetGet('Accounts_name');
+}
+$session_GetAllAdUnits = new Container('GetAllAdUnits');
+  
+?>
+<style>
+.col-sm-12.text-view { 
+    color: #06c;
+    text-decoration: none;
+    font-size: 12px;
+}
+</style>
+ <div class="container"> 
+				    <?php if( $getAccessToken == 1) { ?>
+				    <div class="row"> 
+				      <div class="col-sm-12">
+				          <ul class="list-group">
+							  <li class="list-group-item">
+						        <a class="login" href="<?php echo WEBPATH ?>/report-colum-chart"> Report Generate ColumnChart</a> 
+						      </li>
+						       <li class="list-group-item">
+						          <a class="login" href="<?php echo WEBPATH ?>report-geo-chart"> Report Generate GeoChart</a>
+						       </li>
+						
+						       <li class="list-group-item">
+						           <a class="login" href="<?php echo WEBPATH ?>report-line-chart"> Report Generate LineChart</a>
+						       </li>
+						
+						       <li class="list-group-item">
+					        	 <a class="login" href="<?php echo WEBPATH ?>report-pie-chart"> Report Generate Pie Chart</a>
+					           </li>
+						
+						        <li class="list-group-item">
+						            <a class="login" href="<?php echo WEBPATH ?>report-table-chart"> Report Generate Table Chart</a>
+						        </li>  
+						  </ul> 
+						   </div></div><!-- end Ul->li -->
+						   
+						  <div class="row"> 
+				           <div class="col-sm-12">
+				            
+				           <div class="main-content">
+									<div class="file-manager">
+									       
+									        <div class="row">            
+									            <div class="col-lg-12 col-md-12">               
+									                <div class="table-responsive">
+									                
+									                  <div class="container">
+												        <h2>Get All AdUnits</h2>
+													    <p> View AllGetAllAdUnits of Publisher :  <span class="label label-success"><?php echo $Accounts_id .'-'.$Accounts_name?>.</span></p>
+												        </div>
+									                    <div id="status_data" class="col-sm-12" ></div> <!--  $('#status_data').html(data);		 -->
+									                    <table id="datatable-user-manager" class="table table-sorting table-dark-header datatable">
+									                        <thead>
+									                            <tr>
+									                                <th>Number</th> 
+									                                <th>Name</th>     
+									                                <th>ID Code</th>   
+									                                <th>Status</th>
+									                                <th>ACTIVE/INACTIVE</th>
+									                                <!--  <th>Action</th> -->
+									                                <th>Assign to pub <span class="label label-success"><?php echo $full_name;?></span></th>
+									                                <th>Connect Report</th>
+									                            </tr>
+									                        </thead>
+									                        <tbody>
+									                           <?php   
+									                           # Data GetAllAdUnits 
+									                   if($session_GetAllAdUnits->offsetExists('AllAdUnits')){
+									                      	$Get_AllAdUnits = $session_GetAllAdUnits->offsetGet('AllAdUnits');
+									                           if (!empty($Get_AllAdUnits)) {
+									                           	foreach ($Get_AllAdUnits as $adUnit) {
+									                           ?>
+									                            <tr>
+									                                <td> 
+									                                   <div class="checkbox">
+																		  <input type="checkbox" value=""> 
+																		</div>
+									                                </td> 
+									                                <td>
+									                                  <div class="col-sm-12 ">
+									                                   <?php echo $adUnit['name'];?>
+									                                  </div>
+									                                    <div class="col-sm-12 text-view">
+									                                      <a href=""><span>Hiden</span></a> |  <a href=""><span>View Report</span></a> |  <a href=""><span>GetCode</span></a>
+									                                    </div>
+									                                </td>
+									                                <td><?php echo  $adUnit['code'];?></td>  
+									                                <td id="status<?php echo $adUnit['code']; ?>">
+									                                    <?php
+									                                    if($adUnit['status']){
+									                                        echo '<span class="label label-success"><i class="fa fa-check-circle-o"></i> '.$adUnit['status'].'</span>';
+									                                    } else   {
+									                                         echo '<span class="label label-danger"><i class="fa fa-minus-circle"></i> Null</span>';
+									                                    }
+									                                    ?>
+									                                </td>
+									                                <td>
+									                                    <input id="active<?php echo $adUnit['code']; ?>" 
+									                                           onchange="active_usser90(<?php echo $adUnit['code'];?>)" 
+									                                           <?php if($adUnit['status']=='ACTIVE'){ echo 'checked';}?> 
+									                                           type="checkbox"  
+									                                           data-toggle="toggle" 
+									                                           data-onstyle="success" 
+									                                           data-on="Active"  
+									                                           data-off="Pause" 
+									                                           data-offstyle="danger" 
+									                                           data-size="mini" 
+									                                           data-style="ios">
+									                                           
+									                                    
+									                                </td>
+									                               <!--    
+									                                <td>
+									                                    <button class="btn btn-danger btn-xs" onclick="deleteaction90(<?php echo $adUnit['code']; ?>)"><i class="fa fa-trash"></i> Delete</button>
+									                                </td>
+									                                -->   
+									                                 <td>
+									                                    <button class="btn btn-warning btn-xs" onclick="setparam90(<?php echo $adUnit['code']; ?>)"><i class="fa fa-trash"></i>Assign</button>
+									                                </td>
+									                                
+									                                <td>
+									                                   <a href="<?php #echo $authUrl; ?>" >
+									                                      <button class="btn label label-success btn-xs"  ><i class="fa fa-trash"></i> Connect Report Adsense  </button>
+									                                   </a>    
+									                                </td>
+									                            </tr>
+									                           <?php  
+									                              } # empty($Get_AllAdUnits)
+									                           } else {
+									                             	print "No ad units found.\n";
+									                            }
+									                           } # offsetExists
+									                           # End Data GetAllAdUnits 
+									                           ?>
+									                        </tbody>
+									                    </table>
+									                </div>
+									 
+									                 
+									            </div>
+									        </div>
+									    </div>
+									</div><!-- end class="main-content" -->
+				           
+				           
+						   </div></div><!-- end Table GetAllAdUnits -->
+						   
+					<?php } 
+					   else if( $getAccessToken == 0)
+					  { 
+					  ?>
+					    <div class="row"> 
+				         <div class="col-sm-12">
+					  <?php 
+						# Neu Chua co Token thi ket noi den api google de lay token
+						echo '<div><div class="request" style="min-height: 300px; margin: 10px;">';
+						if (isset($authUrl)) {
+							echo '<a class="login" href="' . $authUrl . '">Click for Report Adsense!</a>';
+						} else {
+							echo '<a class="logout" href="'.WEBPATH.'/users/logout">Logout</a>';
+						};
+						echo "</div></div>";
+					}
+					?>	  
+					
+						  
+						 </div>
+				    
+	 </div></div></div> <!--  end Container	 -->	    
+ 

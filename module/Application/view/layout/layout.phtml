@@ -56,6 +56,11 @@ $userId     =  $session->offsetGet('userId');
 				.navbar-inverse .navbar-nav>li>a {
 				    color: #482e2e;
 				}
+			p.footer-format {
+			    text-align: center;
+			    font-size: 16px;
+			    font-weight: bold;
+			}	
         </style>                  
 
          <?php $this->flashNoty()->fire(); ?>
@@ -104,9 +109,11 @@ $userId     =  $session->offsetGet('userId');
         </nav>
         <div class="container">
             <?php echo $this->content; ?>
+         </div> <!-- /container -->
+        <div class="container">    
             <hr>
             <footer>
-                <p>&copy; 2016 - <?php echo date('Y') ?> by MP Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+                <p class="footer-format">&copy; 2016 - <?php echo date('Y') ?> by MP Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
             </footer>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>
