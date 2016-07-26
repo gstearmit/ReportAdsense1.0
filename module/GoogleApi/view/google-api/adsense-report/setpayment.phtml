@@ -1,0 +1,485 @@
+<?php 
+use Zend\Session\Container;
+$session = new Container('User');
+$first_name =  $session->offsetGet('first_name');
+$last_name  =  $session->offsetGet('last_name');
+$full_name  =  $first_name . ' ' . $last_name;
+$userName   =  $session->offsetGet('userEmail');
+$userId     =  $session->offsetGet('userId');
+?>
+<link rel="stylesheet" href="/admin-news/intlTelInput.css" />
+<!-- 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css">  
+ <link href="/admin-news/css/style.css" rel="stylesheet">
+ -->
+ <link href="/admin-news/css/font-awesome.min.cs" rel="stylesheet">
+ <link href="/admin-news/css/bootstrap-select.min.css" rel="stylesheet"> 
+ <link href="/admin-news/css/bootstrap.min.css" rel="stylesheet">
+  <style type="text/css">
+          .navbar-inverse { 
+             background-color: rgba(49,163,68,1) !important; 
+             background-image :none;
+             border-color: #31a344;
+             }
+             
+           .navbar-brand {
+			    float: left;
+			    padding: 9px 15px;
+			    font-size: 18px;
+			    line-height: 20px;
+			    color: #fff !important;
+			}
+			.navbar-inverse .navbar-nav>.active>a {
+			    color: #fff;
+			    background-color: #31a344 !important;
+			    background-image: none;
+			    background-repeat: no-repeat;
+			    -webkit-box-shadow: navajowhite;
+			    box-shadow: none;
+			}
+			li.pa-right {
+				    float: right;
+				}
+				
+				.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
+				    text-shadow: 0 -1px 0 rgb(46, 46, 46);
+				}
+				.navbar-inverse .navbar-nav>li>a {
+				    color: #482e2e;
+				}
+			p.footer-format {
+			    text-align: center;
+			    font-size: 16px;
+			    font-weight: bold;
+			}
+			.dropup {
+			    margin-top: 6px;
+			}	
+			/**Menu dropdown*/
+			ul.dropdown-menu.menune {
+			    display: block;
+			    float: right !important;
+			    left: 911px;
+			    top: 7px;
+			    background-color: rgb(49, 163, 68);
+			}
+			img.log-vavi-bar {
+			    width: 16px;
+			    height: 16px;
+			    display: inherit;
+			}
+			a.navbar-brand {
+			    float: none;
+			    position: relative;
+			    top: 13px;
+			}
+        </style>   
+ 
+<script src="/admin-news/js/bootstrap-select.js"></script>
+
+<script src="/admin-news/js/formValidation.min.js"></script>
+<script src="/admin-news/js/frameword.min.js"></script>
+<script src="/admin-news/js/bootstrap-slider.js"></script>
+<script src="/admin-news/js/moment.js"></script>
+<script src="/admin-news/js/bootstrap-datetimepicker.js"></script>    
+      
+<div class="col-xs-12 title-panel">
+ 
+    <h1>
+        <span>BILLING INFOR</span>
+    </h1>
+
+</div>
+
+
+<div class="col-xs-12 box-main">
+     
+   
+        <div id="multiphase" role="form" class="form-horizontal" action="" >
+
+            <div id="results">
+  
+                <h4><a href="#">Finalized earnings</a></h4>
+                
+                <form method="post" name="signupForm1" id="signupForm1" class="form-horizontal fv-form fv-form-bootstrap" enctype="multipart/form-data" >
+                <section data-step="0">
+ 
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Earnings <span class="colo-red">(*)</span></label>
+                        <div class="col-md-4">
+                            <input type="text" name="amountpaypal" class="form-control" id="amountpaypal" value="" data-fv-field="amountpaypal">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Currency <span class="colo-red">(*)</span></label>
+                        <div class="col-md-4 select-dcm">
+                           <select name="currency" id="currency" class="selectpicker bs-select-hidden" tabindex="2" title="- Select Currency -" data-fv-field="currency"><option class="bs-title-option" value="">- Select Currency -</option><option value="USD">USD</option>
+							<option value="EUR">EUR</option>
+							<option value="CZK">CZK</option>
+							<option value="HRK">HRK</option>
+							<option value="GBP">GBP</option></select>
+                        </div>
+                    </div>
+                    
+                    <div class="recerver">
+	                    <div class="bg-form">
+	                   
+	                         <h4><a href="#">Information</a></h4>
+	
+	                        <hr>
+	
+	                        <div class="form-group">
+	                            <label for="namefull" class="col-sm-3 control-label">
+	                                Full Name 
+	                                <span class="colo-red">*</span>
+	                            </label>
+	                            <div class="col-sm-9">
+	                                <input type="text" class="form-control"  name="namefull"  id="namefull" tabindex="1" value="<?php echo $full_name;?>">
+	                            </div>
+	                        </div>
+	                       
+	                        
+	                        <div class="form-group">
+	                            <label for="pastportnumberreceive" class="col-sm-3 control-label">
+	                              PastportNumber (or NationalID) 
+	                               <!--  <span class="colo-red">*</span>:  -->
+	                            </label>
+	                            <div class="col-sm-9">
+	                                <input type="text" name="pastportnumberreceive" class="form-control" placeholder=" PastportNumber (or NationalID) Of Receive"   tabindex="4">
+	                            </div>
+	                        </div>
+	                        
+                            
+	                        <div class="form-group">
+	                            <label for="birth_date" class="col-sm-3 control-label">
+	                                Birth Date 
+	                                <span class="colo-red">*</span>:
+	                            </label>
+	                            <div class="col-sm-9">
+	                                <input type="text" name="birth_date" id="birth_date"  class="form-control selectpicker" placeholder="YYYY-MM-DD . Ex: 2016-07-22"  >
+	                            </div>
+	                        </div>
+	                        
+	                        <div class="form-group">
+	                            <label for="NumberPhone" class="col-sm-3 control-label">
+	                                NumberPhone 
+	                                <span class="colo-red">*</span>:
+	                            </label>
+	                            <div class="col-sm-9">
+	                                <input type="tel" name="NumberPhone"  id="NumberPhone"  class="form-control" placeholder="NumberPhone" value="" tabindex="2">
+	                            </div>
+	                        </div>
+	                        
+	                        <div class="form-group">
+	                            <label for="birth_date" class="col-sm-3 control-label">
+	                                Email 
+	                                <span class="colo-red">*</span>:
+	                            </label>
+	                            <div class="col-sm-9">
+	                                <input type="text" name="emailpaypal" id="emailpaypal"  class="form-control selectpicker"  value="<?php echo $userName;?>">
+	                            </div>
+	                        </div>
+	                        
+	                        <div class="form-group">
+	                            <label for="Skype_Account" class="col-sm-3 control-label">
+	                                Skype Account 
+	                                <!--  <span class="colo-red">*</span>:-->
+	                            </label>
+	                            <div class="col-sm-9">
+	                                <input type="text" name="Skype_Account" id="Skype_Account"  class="form-control selectpicker" placeholder="ads.skype"   >
+	                            </div>
+	                        </div>
+	                        
+	                         <div class="form-group">
+	                            <label for="acc_facebook" class="col-sm-3 control-label">
+	                                Account Facebook 
+	                                <!--  <span class="colo-red">*</span>:-->
+	                            </label>
+	                            <div class="col-sm-9">
+	                                <input type="text" name="acc_facebook" id="acc_facebook"  class="form-control" placeholder="https://facebook.com/OpAdsense"  >
+	                            </div>
+	                        </div>
+	                        
+	                        <div class="form-group">
+	                            <label for="domain" class="col-sm-3 control-label">
+	                                Name Website( Domain)
+	                                <!--  <span class="colo-red">*</span>:-->
+	                            </label>
+	                            <div class="col-sm-9">
+	                                <input type="text" name="domain" id="domain"  class="form-control" placeholder="https://adsensereport.com"  >
+	                            </div>
+	                        </div>
+	                         
+	                </div>
+                    </div> <!-- form Recerver -->
+                    
+                    
+                    <div class="recerver">
+	                    <div class="bg-form">
+	                   
+	                         <h4><a href="#">Bank Account Infor (MoneyPoint.asia)</a></h4>
+	                         I can not account MoneyPoint.asia (https://moneypoint.aisa) <a href="https://moneypoint.aisa"><span> click here to register  </span></a>
+	
+	                        <hr>
+	
+	                        <div class="form-group">
+	                            <label for="namefull" class="col-sm-3 control-label">
+	                                Account Number
+	                                <span class="colo-red">*</span>
+	                            </label>
+	                            <div class="col-sm-9">
+	                                <input type="text" class="form-control"  name="Account_Number"  id="Account_Number" tabindex="1" placeholder="9311.1.000.0007767.0" >
+	                            </div>
+	                        </div>
+	                        
+	                        <div class="form-group">
+	                            <label for="Account_Name" class="col-sm-3 control-label"  >
+	                                Account Name
+	                                <span class="colo-red">*</span>:
+	                            </label>
+	                            <div class="col-sm-9">
+	                                <input type="text" name="Account_Name" id="Account_Name"  class="form-control" id="Account_Name" placeholder="NGO MINH HIEU">
+	                            </div>
+	                        </div>
+	                        
+	                        <div class="form-group">
+	                            <label for="Short_Account_Number" class="col-sm-3 control-label">
+	                                Short Account Number
+	                                <span class="colo-red">*</span>:
+	                            </label>
+	                            <div class="col-sm-9">
+	                                <input type="tel" name="Short_Account_Number"  id="Short_Account_Number"  class="form-control" placeholder="9311.7767.0"   tabindex="2">
+	                            </div>
+	                        </div>
+	                         
+	                         
+	                </div>
+                    </div> <!-- form Recerver -->
+                    
+                     <h3><a href="#">Choose ways to get money</a></h3>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="pwd">Service  <span class="colo-red">*</span>: </label>
+                            <div class="col-sm-9"> 
+                               <select name="service" id="service" class="selectpicker bs-select-hidden" tabindex="2" title="- Select service -" data-fv-field="service">
+                                   <option class="bs-title-option" value="">-- Select service Money Transfer --</option>
+                                   <option value="MPASIA">--WebSite Moneypoint.asia -- fee (FREE)---</option>
+                                   <option value="CASHTRANSFER">--CASH TRANSFER (FEE : 5 USD)--</option>
+                                   <option value="VOUCHER"> -- VOUCHER (FEE : 5 USD)--</option>
+                                   <option value="HOMEDELIVERY"> -- HOMEDELIVERY (FEE : 30 USD)--</option>
+                                </select>
+                            </div>
+                        </div> 
+
+                   <input name="submit" type="submit" id="paymentoption" class="btn btn-success  pull-right" value="Set Payment"  >
+                  </form>  
+                    <!-- End Form  -->
+                    
+                </section>
+
+            </div><!-- Results are displayed here -->
+
+ 
+            
+            <!-- end of wizard-->
+
+        </div> <!-- end of div form-->
+
+    </div><!-- end <div class="col-xs-12 box-main"> -->
+
+ 
+ 
+<script src="/admin-news/intlTelInput.min.js"></script>   
+<script type="text/javascript">
+    $(function () {
+        $('#birth_date').datetimepicker({
+            format: 'YYYY-MM-DD' //, defaultDate: new Date()
+        });
+
+    });
+</script> 
+<script>
+    $(document).ready(function () {
+        
+       $('#signupForm1')
+        .find('[name="NumberPhone"]')
+            .intlTelInput({
+                utilsScript: '/admin-news/utils.js',
+                autoPlaceholder: true,
+                preferredCountries: ['vn']
+            });
+
+        $('#signupForm1')
+                .find('[name="currency"]')
+                .selectpicker()
+                .change(function (e) {
+                    // revalidate the language when it is changed
+                    $('#signupForm1').formValidation('revalidateField', 'currency');
+                })
+                .end()
+                .formValidation({
+                    framework: 'bootstrap',
+                    container: 'tooltip',
+                    excluded: ':disabled',
+                    icon: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                        /*
+                    	amountpaypal: {
+                            container: 'popover',
+                            validators: {
+                                numeric: {
+                                    message: 'The number can contain number only',
+                                    thousandsSeparator: '',
+                                    decimalSeparator: '.'
+                                },
+                                notEmpty: {
+                                    message: 'The number is required and can not be empty'
+                                },
+                                regexp: {
+                                    regexp: /^[0-9_\.]+$/, // No Special Characters
+                                    message: 'No Special Characters'
+                                }
+                                 
+                            }
+                        },
+                        currency: {
+                            container: 'popover',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Please select currency.'
+                                } 
+                            }
+                        },*/
+
+                        pastportnumberreceive: {
+                            container: 'popover',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The PastportNumber(or NationalID) Receive  is required and can not be empty.'
+                                },
+                                regexp: {
+                                    regexp: /^\s*[a-zA-Z0-9,\s]+\s*$/, // No Special Characters
+                                    message: 'No Special Characters'
+                                },
+                            }
+                        },
+                        namefull: {
+                            container: 'popover',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Please specify.'
+                                },
+                                regexp: {
+                                    regexp: /^\s*[a-zA-Z0-9,\s]+\s*$/, // No Special Characters
+                                    message: 'No Special Characters'
+                                },
+                            }
+                        },
+                        birth_date: {
+                            container: 'popover',
+                            validators: {
+                                notEmpty: {
+                                    message: 'The Birth Date is required and can not be empty'
+                                },
+                                date: {
+                                    format: 'YYYY-MM-DD',
+                                    message: 'The date is not a valid'
+                                },
+                                callback: {
+                                    message: 'Customer should be at least 18 years old',
+                                    callback: function (value, validator) {
+                                        var m = new moment(value, 'YYYY-MM-DD', true);
+                                        var year_now = new moment().year();
+                                        if (!m.isValid()) {
+                                            return false;
+                                        }
+                                        return ((year_now - m.years()) >= 18);
+                                    }
+                                }
+                            }
+                        },
+                        /* http://formvalidation.io/examples/using-mailgun-api-validate-email-address/ */
+
+                        emailpaypal: {
+                            container: 'popover',
+                            validators: {
+                                notEmpty: {
+                                    message: 'E-mail Receive  can not be empty.'
+                                },
+                                emailAddress: {
+                                    message: 'The input is not a valid email address'
+                                }
+                            }
+
+                        }
+
+                        ,
+                        NumberPhone: {
+                            container: 'popover',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Please phone number.'
+                                },
+                                phone: {
+                                    message: 'The value is not valid %s phone number'
+                                }, 
+                                callback: {
+                                    message: 'The phone number is not valid',
+                                    callback: function(value, validator, $field) {
+                                        return value === '' || $field.intlTelInput('isValidNumber');
+                                    }
+                                 },
+                            }
+                        },
+                        service: {
+                            container: 'popover',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Please select Service.'
+                                } 
+                            }
+                        },
+                    }
+                })
+                .on('success.form.fv', function (e) {
+                    // Prevent form submission
+                    e.preventDefault();
+                    var $form = $(e.target),  fv = $form.data('formValidation');
+                      
+                    // Send the message
+                    $.ajax({
+                        type: 'POST',
+                        cache: true,
+                        url: '<?php echo WEBPATH ?>' + '/load-transfer/AjaxTransferPayPal',
+                        //url: $form.attr('action'),
+                        type: 'POST',
+                        data: $form.serialize(),
+                        beforeSend: function () {
+                            document.getElementById('results').innerHTML = '';
+                            openModal();
+                        },
+                        success: function (result) {
+                            closeModal();
+                            document.getElementById("results").innerHTML = result;
+                            
+                        }
+                    });
+                    
+                    
+                });
+    });</script>
+
+ 
+
+<!-- Loading Modal -->
+<!-- 
+<div id="fade"></div>
+<div id="modal">
+    <p>Your request has been sent, please wait for its execution</p>
+    <img id="loader" src="/admin-news/images/loader.gif"  alt="" />
+</div>
+ -->
+<!-- Loading Modal -->

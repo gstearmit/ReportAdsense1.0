@@ -64,8 +64,7 @@ class GenerateReportWithPaging {
     );
 
     // Run first page of report.
-    $response = $service->accounts_reports->generate($accountId, $startDate,
-        $endDate, $optParams);
+    $response = $service->accounts_reports->generate($accountId, $startDate,  $endDate, $optParams);
 
     if (!isset($response) || empty($response['rows'])) {
       print "No rows returned.\n";
@@ -74,7 +73,7 @@ class GenerateReportWithPaging {
 
     // The first page, so display headers.
     foreach($response['headers'] as $header) {
-      printf('%25s', $header['name']);
+      printf('%18s', $header['name']);
     }
     print "\n";
 
@@ -92,8 +91,7 @@ class GenerateReportWithPaging {
       $optParams['maxResults'] = $pageSize;
 
       // Run next page of report.
-      $response = $service->accounts_reports->generate($accountId, $startDate,
-          $endDate, $optParams);
+      $response = $service->accounts_reports->generate($accountId, $startDate, $endDate, $optParams);
 
       // If the report size changes in between paged requests, the result may be
       // empty.
@@ -112,7 +110,7 @@ class GenerateReportWithPaging {
   private static function displayRows($rows) {
     foreach($rows as $row) {
       foreach($row as $column) {
-        printf('%25s', $column);
+        printf('%18s', $column);
       }
       print "\n";
     }

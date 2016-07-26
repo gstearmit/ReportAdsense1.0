@@ -1,0 +1,101 @@
+<?php 
+use Zend\Session\Container;
+$session = new Container('User');
+$first_name =  $session->offsetGet('first_name');
+$last_name  =  $session->offsetGet('last_name');
+$full_name  =  $first_name . ' ' . $last_name;
+$userName   =  $session->offsetGet('userEmail');
+$userId     =  $session->offsetGet('userId');
+
+$session_GetAllAccounts = new Container('AllAccounts');
+if ($session_GetAllAccounts->offsetExists('Accounts_id')) {
+	$Accounts_id   =  $session_GetAllAccounts->offsetGet('Accounts_id');
+}
+if ($session_GetAllAccounts->offsetExists('Accounts_name')) {
+	$Accounts_name   =  $session_GetAllAccounts->offsetGet('Accounts_name');
+}
+$session_GetAllAdUnits = new Container('GetAllAdUnits');
+
+# Start GenerateColumnChart
+// $session_GenerateColumnChart = new Container('GenerateColumnChart');
+// $report  = $session_GenerateColumnChart->offsetGet('GenerateColumnChart_report_all');
+// $data    = $session_GenerateColumnChart->offsetGet('GenerateColumnChart_report_data_json');
+// $columns = $session_GenerateColumnChart->offsetGet('GenerateColumnChart_report_data_colum');
+// $options = $session_GenerateColumnChart->offsetGet('GenerateColumnChart_report_data_options');
+// $type    = $session_GenerateColumnChart->offsetGet('GenerateColumnChart_report_data_type');
+# End GenerateColumnChart
+
+# Start GenerateLineChart
+$session_GenerateLineChart = new Container('GenerateLineChart');
+$report_GenerateLineChart  = $session_GenerateLineChart->offsetGet('GenerateLineChart_report_all');
+$data_GenerateLineChart    = $session_GenerateLineChart->offsetGet('GenerateLineChart_report_all_data_json');
+$columns_GenerateLineChart = $session_GenerateLineChart->offsetGet('GenerateLineChart_report_all_data_colum');
+$type_GenerateLineChart    = $session_GenerateLineChart->offsetGet('GenerateLineChart_report_all_data_type');
+$options_GenerateLineChart = $session_GenerateLineChart->offsetGet('GenerateLineChart_report_all_data_options');
+# End GenerateLineChart
+
+/**
+ * Genereate and returns the html code for the chart page.
+ * @param mixed $data The data contained in the table
+ * @param mixed $columns Description of the table columns
+ * @param string $type Required chart type
+ * @param mixed $options Options for the chart
+ * @return string The html code to that draws the chart
+ */
+function generateMPLineChartHtml($data, $columns, $type, $options) {
+	$columnsHtml = '';
+	if(!empty($columns))
+ {
+	foreach ($columns as $column) {
+		$columnsHtml .=
+		'dataline_p.addColumn(\'' . $column[0] . '\', \'' . $column[1] . '\');';
+	}
+	$page = <<<CHART
+<html>
+  <head>
+    <title>Line Chart Example</title>
+    <script type="text/javascript"
+      src='https://www.google.com/jsapi?autoload=
+          {"modules":[{"name":"visualization","version":"1"}]}'>
+    </script>
+  </head>
+  <body>
+    <div id="vis_div_line_p" style="width: 600px; height: 400px;"></div>
+    <script type="text/javascript">
+      var dataline_p = new google.visualization.DataTable();
+      $columnsHtml
+      dataline_p.addRows($data);
+      var wrapper_line_p = new google.visualization.ChartWrapper({
+        chartType: '$type',
+        dataTable: dataline_p,
+        options: $options,
+        containerId: 'vis_div_line_p'
+      });
+      wrapper_line_p.draw();
+    </script>
+  </body>
+</html>
+CHART;
+	return $page;
+} # End $columns
+else { $error = 'No Data Report Line Chart'; return $error; }
+}
+  
+?>
+<style>
+.col-sm-12.text-view { 
+    color: #06c;
+    text-decoration: none;
+    font-size: 12px;
+}
+</style>
+ <div class="container"> 
+ 
+						 <div class="row">  
+				         <div class="col-sm-12"> 
+				             <?php
+				             # $session_GenerateLineChart = new Container('GenerateLineChart'); 
+				             print generateMPLineChartHtml($data_GenerateLineChart, $columns_GenerateLineChart, $type_GenerateLineChart, $options_GenerateLineChart); ?>
+				         </div>  </div> <!-- End Report Line -->
+ </div> <!--  end Container	 -->	    
+ 

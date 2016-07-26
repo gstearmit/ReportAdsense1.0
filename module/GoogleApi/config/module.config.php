@@ -34,14 +34,46 @@ return array(
         		'Adsense-Report' => array(
         				'type' => 'Segment',
         				'options' => array(
-        						'route' => '/adsense[/:action]',
+        						'route' => '/adsense[/:action[/:iduser]]',
         						'constraints' => array(
-        								'action' => '[a-zA-Z][a-zA-Z0-9-]*', 
+        								'action' => '[a-zA-Z][a-zA-Z0-9-]*',
+        								'iduser' => '[1-9][0-9]*',
         						),
         						'defaults' => array(
         								'__NAMESPACE__' => 'GoogleApi\Controller',
         								'controller' => 'AdsenseReport',
         								'action' => 'index'
+        						)
+        				)
+        		),
+        		
+        		'Adsense-Report-CallBack' => array(
+        				'type' => 'Segment',
+        				'options' => array(
+        						'route' => '/reportcallback[/:iduser]',
+        						'constraints' => array( 
+        								'iduser' => '[1-9][0-9]*',
+        						),
+        						'defaults' => array(
+        								'__NAMESPACE__' => 'GoogleApi\Controller',
+        								'controller' => 'AdsenseReport',
+        								'action' => 'reportcallback'
+        						)
+        				)
+        		),
+        		
+        		# setpayment
+        		'Adsense-Report-Setpayment' => array(
+        				'type' => 'Segment',
+        				'options' => array(
+        						'route' => '/setpayment[/:iduser]',
+        						'constraints' => array(
+        								'iduser' => '[1-9][0-9]*',
+        						),
+        						'defaults' => array(
+        								'__NAMESPACE__' => 'GoogleApi\Controller',
+        								'controller' => 'AdsenseReport',
+        								'action' => 'setpayment'
         						)
         				)
         		),

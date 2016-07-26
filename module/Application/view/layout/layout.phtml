@@ -24,6 +24,9 @@ $userId     =  $session->offsetGet('userId');
                         ->prependStylesheet($this->basePath('css/style.css'))
                         ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
                         ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
+                        
+   
+                     
          <style type="text/css">
           .navbar-inverse { 
              background-color: rgba(49,163,68,1) !important; 
@@ -60,7 +63,18 @@ $userId     =  $session->offsetGet('userId');
 			    text-align: center;
 			    font-size: 16px;
 			    font-weight: bold;
+			}
+			.dropup {
+			    margin-top: 6px;
 			}	
+			/**Menu dropdown*/
+			ul.dropdown-menu.menune {
+			    display: block;
+			    float: right !important;
+			    left: 911px;
+			    top: 7px;
+			    background-color: rgb(49, 163, 68);
+			}
         </style>                  
 
          <?php $this->flashNoty()->fire(); ?>
@@ -90,18 +104,47 @@ $userId     =  $session->offsetGet('userId');
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class=""><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+                        <li class=""><a href="<?php echo $this->url('home') ?>"> <span class="glyphicon glyphicon-home"></span> <?php echo $this->translate('Home') ?></a></li>
                         <?php if(! $userName ) {?>
-                          <li class="active"><a href="<?php echo WEBPATH; ?>/users/login"><?php echo $this->translate('login') ?></a></li>
-                          <li class=""><a href="<?php echo WEBPATH; ?>/users/register"><?php echo $this->translate('register') ?></a></li>
+                          <li class="active"><a href="<?php echo WEBPATH; ?>/users/login"><span class="glyphicon glyphicon-log-in"></span> <?php echo $this->translate('Login') ?></a></li>
+                          <li class=""><a href="<?php echo WEBPATH; ?>/users/register"><span class="glyphicon glyphicon-registration-mark"></span> <?php echo $this->translate('Register') ?></a></li>
                         <?php }else {  # $full_name ?>
-                             <li class="active"><a href="#" alt="<?php echo $userName;?>" > Hello ,<?php echo $full_name; ?></a></li>
-                             <li class=""><a href="<?php echo WEBPATH; ?>/dashboard-user"><?php echo $this->translate('Set Param of ADSENSE') ?></a></li>
+                             <li class="active"><a href="#" alt="<?php echo $userName;?>" ><span class="glyphicon glyphicon-check"></span> Hello , <span class="glyphicon glyphicon-user"></span> <?php echo $full_name; ?></a></li>
+                             <?php if($userName =='gstearmit@gmail.com' || $userName == 'reportadsense2016@gmail.com' ) { ?>
+                              <li class=""><a href="<?php echo WEBPATH; ?>/dashboard-user"><span class="glyphicon glyphicon-off"></span> <?php echo $this->translate('Set Param of ADSENSE') ?></a></li>
+                             <?php } # end supper ?>
                              
-                             <!--  
-                               <li class=""><a href="<?php echo WEBPATH; ?>/set-param-adsense"><?php echo $this->translate('Set Param of ADSENSE') ?></a></li>
-                             -->
-                             <li class="pa-right"><a href="<?php echo WEBPATH; ?>/users/logout"><?php echo $this->translate('Logout') ?></a></li>
+                              <?php if($userName =='gstearmit@gmail.com' || $userName == 'reportadsense2016@gmail.com' ) { ?>
+                                 <!--  
+	                                 <ul class="dropdown-menu menune">
+								      <li class=""> <a href="<?php echo WEBPATH; ?>/option"><span class="glyphicon glyphicon-cog"></span> <?php echo $userName ?> </a></li>
+	                                  <li class=""> <a href="<?php echo WEBPATH; ?>/setpayment"><span class="glyphicon glyphicon-credit-card"></span>  Set PayMent</a></li>
+	                              
+								    </ul>
+							     -->
+                              <?php } else { ?>
+                                   <li class=""> <a href="#"><span class="glyphicon glyphicon-cog"></span> <?php echo $userName ?> </a></li>
+                                   <li class=""> <a href="<?php echo WEBPATH; ?>/setpayment"><span class="glyphicon glyphicon-credit-card"></span>  Set PayMent</a></li>
+                                <?php } #end else?>
+                              <!--  
+                              <li class="pa-right"> 
+	                             <div class="dropup">
+									  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									    <?php echo $userName ?> <span class="glyphicon glyphicon-cog"></span>
+									  </button>
+									  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+									    <li><a href="<?php echo WEBPATH; ?>/option"><?php echo $userName ?> <span class="glyphicon glyphicon-cog"></span></a></li>
+									    <li><a href="#">Another action</a></li>
+									    <li><a href="#">Something else here</a></li>
+									    <li role="separator" class="divider"></li>
+									    <li><a href="#">Separated link</a></li>
+									  </ul>
+								</div>
+							</li>
+							 -->
+							<li class="pa-right"><a href="<?php echo WEBPATH; ?>/users/logout"><span class="glyphicon glyphicon-log-out"></span> <?php echo $this->translate('Logout') ?></a></li>
+                            
+                              
                         <?php } # End $fire_name?>
                     </ul>
                 </div><!--/.nav-collapse -->

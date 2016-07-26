@@ -228,39 +228,305 @@ class AdsenseReportController extends AbstractActionController {
 		return $view;
 	}
 	
-	
-	public function reportcallbackAction() 
+	public function callbackAction()
 	{
-	
 		# Noty-alert
-		$this->flashMessenger()->addSuccessMessage('Success message, bravo!');
-		$this->flashMessenger()->addErrorMessage('Error with system, contact us.');
-		$this->flashMessenger()->addInfoMessage('Info message, to do whatever...');
-		$this->flashMessenger()->addWarningMessage('Warning message to be careful.'); 
+		// 		$this->flashMessenger()->addSuccessMessage('Success message, bravo!');
+		// 		$this->flashMessenger()->addErrorMessage('Error with system, contact us.');
+		// 		$this->flashMessenger()->addInfoMessage('Info message, to do whatever...');
+		// 		$this->flashMessenger()->addWarningMessage('Warning message to be careful.');
 		# End Noty Alert
-		
+		$iduser = $this->params()->fromRoute('iduser');
+		# echo "iduser : ".$iduser;
 		$dir_files_json  = dirname(dirname(dirname(dirname(dirname(__DIR__))))).'/files/';
 		
 		$session = new Container('User');
-		$userId    = $session->offsetGet('userId');
-		$userEmail = $session->offsetGet('userEmail');
-		$str = $userId.'-'.$userEmail.Hash_token;
-		$Token_key_user = md5($str);
-		$session->offsetSet('Token_key_user', $Token_key_user);
-		$name_json = $Token_key_user.'.json';
+		$User_get = null;
+		if( $iduser == null ){
+			# Login Pub hien tai va truy van report adssense ,
+			# User Pub dang nhap he thong va truy van report
+			$userId    = $session->offsetGet('userId');
+			$userEmail = $session->offsetGet('userEmail');
+			$str = $userId.'-'.$userEmail.Hash_token;
+			$Token_key_user = md5($str);
+			$session->offsetSet('Token_key_user', $Token_key_user);
+			$name_json = $Token_key_user.'.json';
+			$User_get = null;
+				
 		
-		if($userEmail =='gstearmit@gmail.com') {
-			return $this->redirect()->toRoute('dashboard-user');
+		}else if( $iduser != null)
+		{
+			# Supper Admin dang nhap va assign cho Pub
+			# $iduser la id Cua User Hien Tai Muon truy van
+			$id_pr = $iduser;
+			$id =  $id_pr - Pr_UserId;
+			$userTable = $this->getServiceLocator()->get('Users\Model\UsersTable');
+			$User_get  = $userTable->getUser($id);
+			$str = $User_get['id'].'-'.$User_get['email'].Hash_token;
+			$Token_key_user = md5($str);
+			# Set Key Cho Pub Can Lay
+			$session->offsetSet('Token_key_user_supper', $Token_key_user);
+			$session->offsetSet('Token_key_user_supper_Pub_id', $id);
+			$session->offsetSet('Token_key_user_supper_Pub_email', $User_get['email']);
+			$name_json = $Token_key_user.'.json';
 		}
 		
+		 
+		
 		$filename_client_json = $dir_files_json.$name_json;
+		 
+		$authUrl = '';
+		// Set up authentication.
+		$client = new Google_Client ();
+		$client->addScope ( 'https://www.googleapis.com/auth/adsense.readonly' );
+		$client->setAccessType ( 'offline' );
 		
-// 		echo "name_json : ".$name_json;
-// 		echo "</br>";
+		// Be sure to replace the contents of client_secrets.json with your developer
+		// credentials.
 		
-		# http://localhost:8090/file-upload-examples/multi-html5
+		# tai khoan cez
+		$filename_client = __DIR__ . '/../data/client_secret_248018190114-ikfifcdrsah8sbsr3qvh0otph9sgtphf.apps.googleusercontent.com.json';
+		
+		if (file_exists ( $filename_client_json )) {
+			$client->setAuthConfigFile ( $filename_client_json );
+		} else {
+			die ( "Error Get Client Secrets" );
+		}
+		
+		// Create service.
+		$service = new Google_Service_AdSense ( $client );
+		
+		// If we're logging out we just need to clear our local access token.
+		// Note that this only logs you out of the session. If STORE_ON_DISK is
+		// enabled and you want to remove stored data, delete the file.
+		if (isset ( $_REQUEST ['logout'] )) {
+			unset ( $_SESSION ['access_token'] );
+		}
+		
+		// If we have a code back from the OAuth 2.0 flow, we need to exchange that
+		// with the authenticate() function. We store the resultant access token
+		// bundle in the session (and disk, if enabled), and redirect to this page.
+		if (isset ( $_GET ['code'] )) {
+			$client->authenticate ( $_GET ['code'] );
+			// Note that "getAccessToken" actually retrieves both the access and refresh
+			// tokens, assuming both are available.
+			$_SESSION ['access_token'] = $client->getAccessToken ();
+			if (STORE_ON_DISK) {
+				@file_put_contents ( TOKEN_FILENAME, $_SESSION ['access_token'] );
+			}
+			// $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+			// http://localhost:8082/adsense-sample.php
+			$redirect = 'http://localhost:8090/reportcallback';
+			header ( 'Location: ' . filter_var ( $redirect, FILTER_SANITIZE_URL ) );
+			exit ();
+		}
+		
+		// If we have an access token, we can make requests, else we generate an
+		// authentication URL.
+		
+			
+		
+		if (isset ( $_SESSION ['access_token'] ) && $_SESSION ['access_token']) {
+			$client->setAccessToken ( $_SESSION ['access_token'] );
+		
+		} else if (STORE_ON_DISK && file_exists ( TOKEN_FILENAME ) && @filesize ( TOKEN_FILENAME ) > 0) {
+			// Note that "setAccessToken" actually sets both the access and refresh token,
+			// assuming both were saved.
+			$client->setAccessToken ( file_get_contents ( TOKEN_FILENAME ) );
+			$_SESSION ['access_token'] = $client->getAccessToken ();
+		} else {
+			// If we're doing disk storage, generate a URL that forces user approval.
+			// This is the only way to guarantee we get back a refresh token.
+			if (STORE_ON_DISK) {
+				$client->setApprovalPrompt ( 'force' );
+			}
+			$authUrl = $client->createAuthUrl ();
+		}
+		
+		# Start Taking Google
+		 
+		
+		
+		if ($client->getAccessToken())
+		{
+			$getAccessToken = 1;
+			#echo '<pre class="result">';
+		
+			# Start makeRequests($service);
+		
+			#print "\n";
+		
+			$GetAllAccountsMP = new \GoogleApi\Model\GetAllAccountsMP;
+			$accounts = $GetAllAccountsMP::run($service, MAX_LIST_PAGE_SIZE);
+		
+			if (isset($accounts) && !empty($accounts)) {
+				// Get an example account ID, so we can run the following sample.
+				$exampleAccountId = $accounts[0]['id'];
+					
+				$GetAccountTree = new \GoogleApi\Model\GetAccountTreeMP;
+				$GetAccountTree::run($service, $exampleAccountId);
+					
+				$GetAllAdClients = new \GoogleApi\Model\GetAllAdClientsMP;
+				$adClients       = $GetAllAdClients::run($service, $exampleAccountId, MAX_LIST_PAGE_SIZE);
+					
+				if (isset($adClients) && !empty($adClients)) {
+					// Get an ad client ID, so we can run the rest of the samples.
+					$exampleAdClient = end($adClients);
+					$exampleAdClientId = $exampleAdClient['id'];
+		
+					// 					$GetAllAdUnits  = new \GoogleApi\Model\GetAllAdUnits;
+					// 					$adUnits        = $GetAllAdUnits::run($service, $exampleAccountId, $exampleAdClientId, MAX_LIST_PAGE_SIZE);
+						
+					# Get MP new
+					$GetAllAdUnitsMP  = new \GoogleApi\Model\GetAllAdUnitsMP;
+					$adUnits          = $GetAllAdUnitsMP::run($service, $exampleAccountId, $exampleAdClientId, MAX_LIST_PAGE_SIZE);
+						
+					if (isset($adUnits) && !empty($adUnits)) {
+						// Get an example ad unit ID, so we can run the following sample.
+						$exampleAdUnitId = $adUnits[0]['id'];
+							
+						$GetAllCustomChannelsForAdUnit = new \GoogleApi\Model\GetAllCustomChannelsForAdUnitMP;
+						$GetAllCustomChannelsForAdUnit::run($service, $exampleAccountId, $exampleAdClientId, $exampleAdUnitId, MAX_LIST_PAGE_SIZE);
+					} else {
+						die('No ad units found, unable to run dependant example.');
+					}
+		
+					$GetAllCustomChannels  = new \GoogleApi\Model\GetAllCustomChannelsMP;
+					$customChannels        = $GetAllCustomChannels::run($service, $exampleAccountId,  $exampleAdClientId, MAX_LIST_PAGE_SIZE);
+					if (isset($customChannels) && !empty($customChannels)) {
+						// Get an example ad unit ID, so we can run the following sample.
+						$exampleCustomChannelId = $customChannels[0]['id'];
+							
+// 						$GetAllAdUnitsForCustomChannel = new \GoogleApi\Model\GetAllAdUnitsForCustomChannelMP;
+// 						$GetAllAdUnitsForCustomChannel::run($service, $exampleAccountId,  $exampleAdClientId, $exampleCustomChannelId, MAX_LIST_PAGE_SIZE);
+					} else {
+						echo 'No custom channels found, unable to run dependant example.';
+						echo  '</br>';
+					}
+		
+// 					$GetAllUrlChannels = new \GoogleApi\Model\GetAllUrlChannelsMP;
+// 					$GetAllUrlChannels::run($service, $exampleAccountId, $exampleAdClientId, MAX_LIST_PAGE_SIZE);
+		
+// 					$GenerateReport = new \GoogleApi\Model\GenerateReport;
+// 					$GenerateReport::run($service, $exampleAccountId, $exampleAdClientId);
+		
+// 					$GenerateReportWithPaging = new \GoogleApi\Model\GenerateReportWithPaging;
+// 					$GenerateReportWithPaging::run($service, $exampleAccountId, $exampleAdClientId, MAX_REPORT_PAGE_SIZE);
+		
+// 					$FillMissingDatesInReport = new \GoogleApi\Model\FillMissingDatesInReport;
+// 					$FillMissingDatesInReport::run($service, $exampleAccountId, $exampleAdClientId);
+		
+// 					$CollateReportData = new \GoogleApi\Model\CollateReportData;
+// 					$CollateReportData::run($service, $exampleAccountId, $exampleAdClientId);
+						
+						
+					# GenerateColumnChart
+					$GenerateColumnChart = new \GoogleApi\Model\GenerateColumnChartMP;
+					$GenerateColumnChart::render($service,$exampleAccountId, $exampleAdClientId);
+		
+					# GenerateGeoChart
+					$GenerateGeoChart = new \GoogleApi\Model\GenerateGeoChartMP;
+					$GenerateGeoChart::render($service,$exampleAccountId, $exampleAdClientId);
+						
+					# GenerateLineChart
+					$GenerateLineChart = new \GoogleApi\Model\GenerateLineChartMP;
+					$GenerateLineChart::render($service,$exampleAccountId, $exampleAdClientId);
+						
+						
+				} else {
+					print 'No ad clients found, unable to run dependant examples.';
+				}
+					
+				// 				$GetAllSavedReports = new \GoogleApi\Model\GetAllSavedReports;
+				// 				$savedReports = $GetAllSavedReports::run($service, $exampleAccountId,MAX_LIST_PAGE_SIZE);
+		
+				// 				if (isset($savedReports) && !empty($savedReports)) {
+				// 					// Get an example saved report ID, so we can run the following sample.
+				// 					$exampleSavedReportId = $savedReports[0]['id'];
+		
+				// 					$GenerateSavedReport = new \GoogleApi\Model\GenerateSavedReport;
+				// 					$GenerateSavedReport::run($service, $exampleAccountId,$exampleSavedReportId);
+				// 				} else {
+				// 					print 'No saved reports found, unable to run dependant example.';
+				// 				}
+					
+				// 				$GetAllSavedAdStyles = new \GoogleApi\Model\GetAllSavedAdStyles;
+				// 				$GetAllSavedAdStyles::run($service, $exampleAccountId, MAX_LIST_PAGE_SIZE);
+					
+				// 				$GetAllAlerts = new \GoogleApi\Model\GetAllAlerts;
+				// 				$GetAllAlerts::run($service, $exampleAccountId);
+		
+			} else {
+				'No accounts found, unable to run dependant examples.';
+			}
+		
+			// 			$GetAllDimensions = new \GoogleApi\Model\GetAllDimensions;
+			// 			$GetAllDimensions::run($service);
+			// 			$GetAllMetrics = new \GoogleApi\Model\GetAllMetrics;
+			// 			$GetAllMetrics::run($service);
+		
+			# End
+		
+			$_SESSION['access_token'] = $client->getAccessToken();
+		
+			# echo '</pre>';
+		
+				
+		} else
+		{
+			$getAccessToken = 0;
+		}
+		
+		
+		
+		$view = new ViewModel ( array (
+				'authUrl' => $authUrl,
+				'client' => $client,
+				'filename_client'=>$filename_client,
+				'getAccessToken'=>$getAccessToken,
+				'iduser'=>$iduser,
+				'User_get'=>$User_get,
+		) );
+		return $view;
+	 
+	}
 	
-		// https://developers.google.com/api-client-library/php/auth/web-app
+	public function reportcallbackAction() 
+	{
+	   
+		# Noty-alert
+// 		$this->flashMessenger()->addSuccessMessage('Success message, bravo!');
+// 		$this->flashMessenger()->addErrorMessage('Error with system, contact us.');
+// 		$this->flashMessenger()->addInfoMessage('Info message, to do whatever...');
+// 		$this->flashMessenger()->addWarningMessage('Warning message to be careful.'); 
+		# End Noty Alert
+		 
+		$dir_files_json  = dirname(dirname(dirname(dirname(dirname(__DIR__))))).'/files/';
+		
+		$session = new Container('User'); 
+		$User_get = null;
+		if( !$session->offsetExists('Token_key_user_supper') ){
+			# Login Pub hien tai va truy van report adssense , 
+			# User Pub dang nhap he thong va truy van report
+			$userId    = $session->offsetGet('userId');
+			$userEmail = $session->offsetGet('userEmail');
+			$str = $userId.'-'.$userEmail.Hash_token;
+			$Token_key_user = md5($str);
+			$session->offsetSet('Token_key_user', $Token_key_user);
+			$name_json = $Token_key_user.'.json';
+			$User_get = null;
+			
+
+		}else if( $session->offsetExists('Token_key_user_supper'))
+		{
+			# Supper Admin dang nhap va assign cho Pub 
+			$Token_key_user_supper = $session->offsetGet('Token_key_user_supper');
+			$name_json = $Token_key_user_supper.'.json'; 
+		}
+		 
+		
+		$filename_client_json = $dir_files_json.$name_json;
+		 
 		$authUrl = '';
 		// Set up authentication.
 		$client = new Google_Client ();
@@ -336,11 +602,11 @@ class AdsenseReportController extends AbstractActionController {
 		if ($client->getAccessToken())
 		{  
 			$getAccessToken = 1;
-			echo '<pre class="result">';
+			#echo '<pre class="result">';
 	
 			# Start makeRequests($service);
 			 
-			print "\n";
+			#print "\n";
 				
 			$GetAllAccountsMP = new \GoogleApi\Model\GetAllAccountsMP;
 			$accounts = $GetAllAccountsMP::run($service, MAX_LIST_PAGE_SIZE);
@@ -377,66 +643,75 @@ class AdsenseReportController extends AbstractActionController {
 						die('No ad units found, unable to run dependant example.'); 
 					}
 						
-					$GetAllCustomChannels  = new \GoogleApi\Model\GetAllCustomChannelsMP;
-					$customChannels        = $GetAllCustomChannels::run($service, $exampleAccountId,  $exampleAdClientId, MAX_LIST_PAGE_SIZE);
-					if (isset($customChannels) && !empty($customChannels)) {
-						// Get an example ad unit ID, so we can run the following sample.
-						$exampleCustomChannelId = $customChannels[0]['id'];
+// 					$GetAllCustomChannels  = new \GoogleApi\Model\GetAllCustomChannelsMP;
+// 					$customChannels        = $GetAllCustomChannels::run($service, $exampleAccountId,  $exampleAdClientId, MAX_LIST_PAGE_SIZE);
+// 					if (isset($customChannels) && !empty($customChannels)) {
+// 						// Get an example ad unit ID, so we can run the following sample.
+// 						$exampleCustomChannelId = $customChannels[0]['id'];
 							
-						$GetAllAdUnitsForCustomChannel = new \GoogleApi\Model\GetAllAdUnitsForCustomChannelMP;
-						$GetAllAdUnitsForCustomChannel::run($service, $exampleAccountId,  $exampleAdClientId, $exampleCustomChannelId, MAX_LIST_PAGE_SIZE);
-					} else {
-						echo 'No custom channels found, unable to run dependant example.';
-						echo  '</br>';
-					}
+// 						#$GetAllAdUnitsForCustomChannel = new \GoogleApi\Model\GetAllAdUnitsForCustomChannelMP;
+// 						# $GetAllAdUnitsForCustomChannel::run($service, $exampleAccountId,  $exampleAdClientId, $exampleCustomChannelId, MAX_LIST_PAGE_SIZE);
+// 					} else {
+// 						echo 'No custom channels found, unable to run dependant example.';
+// 						echo  '</br>';
+// 					}
 						
-					$GetAllUrlChannels = new \GoogleApi\Model\GetAllUrlChannelsMP;
-					$GetAllUrlChannels::run($service, $exampleAccountId, $exampleAdClientId, MAX_LIST_PAGE_SIZE);
-	
+// 					$GetAllUrlChannels = new \GoogleApi\Model\GetAllUrlChannelsMP;
+// 					$GetAllUrlChannels::run($service, $exampleAccountId, $exampleAdClientId, MAX_LIST_PAGE_SIZE);
+
+					echo '<pre class="result">'; 
+					print "\n"; 
 					$GenerateReport = new \GoogleApi\Model\GenerateReport;
 					$GenerateReport::run($service, $exampleAccountId, $exampleAdClientId);
+					
+					echo "</pre>";
 	
-					$GenerateReportWithPaging = new \GoogleApi\Model\GenerateReportWithPaging;
-					$GenerateReportWithPaging::run($service, $exampleAccountId, $exampleAdClientId, MAX_REPORT_PAGE_SIZE);
+// 					$GenerateReportWithPaging = new \GoogleApi\Model\GenerateReportWithPaging;
+// 					$GenerateReportWithPaging::run($service, $exampleAccountId, $exampleAdClientId, MAX_REPORT_PAGE_SIZE);
 	
-					$FillMissingDatesInReport = new \GoogleApi\Model\FillMissingDatesInReport;
-					$FillMissingDatesInReport::run($service, $exampleAccountId, $exampleAdClientId);
+// 					$FillMissingDatesInReport = new \GoogleApi\Model\FillMissingDatesInReport;
+// 					$FillMissingDatesInReport::run($service, $exampleAccountId, $exampleAdClientId);
 	
-					$CollateReportData = new \GoogleApi\Model\CollateReportData;
-					$CollateReportData::run($service, $exampleAccountId, $exampleAdClientId);
+// 					$CollateReportData = new \GoogleApi\Model\CollateReportData;
+// 					$CollateReportData::run($service, $exampleAccountId, $exampleAdClientId);
 					
 					
 					# GenerateColumnChart
-					$GenerateColumnChart = new \GoogleApi\Model\GenerateColumnChart;
+					$GenerateColumnChart = new \GoogleApi\Model\GenerateColumnChartMP;
 					$GenerateColumnChart::render($service,$exampleAccountId, $exampleAdClientId);
-					
-					
+					 
 					# GenerateGeoChart
-					$GenerateGeoChart = new \GoogleApi\Model\GenerateGeoChart;
+					$GenerateGeoChart = new \GoogleApi\Model\GenerateGeoChartMP;
 					$GenerateGeoChart::render($service,$exampleAccountId, $exampleAdClientId);
+					
+					# GenerateLineChart
+					$GenerateLineChart = new \GoogleApi\Model\GenerateLineChartMP;
+					$GenerateLineChart::render($service,$exampleAccountId, $exampleAdClientId);
 					
 					
 				} else {
 					print 'No ad clients found, unable to run dependant examples.';
 				}
 					
-				$GetAllSavedReports = new \GoogleApi\Model\GetAllSavedReports;
-				$savedReports = $GetAllSavedReports::run($service, $exampleAccountId,MAX_LIST_PAGE_SIZE);
-				if (isset($savedReports) && !empty($savedReports)) {
-					// Get an example saved report ID, so we can run the following sample.
-					$exampleSavedReportId = $savedReports[0]['id'];
+// 				$GetAllSavedReports = new \GoogleApi\Model\GetAllSavedReports;
+// 				$savedReports = $GetAllSavedReports::run($service, $exampleAccountId,MAX_LIST_PAGE_SIZE);
+				
+// 				if (isset($savedReports) && !empty($savedReports)) {
+// 					// Get an example saved report ID, so we can run the following sample.
+// 					$exampleSavedReportId = $savedReports[0]['id'];
 	
-					$GenerateSavedReport = new \GoogleApi\Model\GenerateSavedReport;
-					$GenerateSavedReport::run($service, $exampleAccountId,$exampleSavedReportId);
-				} else {
-					print 'No saved reports found, unable to run dependant example.';
-				}
+// 					$GenerateSavedReport = new \GoogleApi\Model\GenerateSavedReport;
+// 					$GenerateSavedReport::run($service, $exampleAccountId,$exampleSavedReportId);
+// 				} else {
+// 					print 'No saved reports found, unable to run dependant example.';
+// 				}
 					
-				$GetAllSavedAdStyles = new \GoogleApi\Model\GetAllSavedAdStyles;
-				$GetAllSavedAdStyles::run($service, $exampleAccountId, MAX_LIST_PAGE_SIZE);
+// 				$GetAllSavedAdStyles = new \GoogleApi\Model\GetAllSavedAdStyles;
+// 				$GetAllSavedAdStyles::run($service, $exampleAccountId, MAX_LIST_PAGE_SIZE);
 					
-				$GetAllAlerts = new \GoogleApi\Model\GetAllAlerts;
-				$GetAllAlerts::run($service, $exampleAccountId);
+// 				$GetAllAlerts = new \GoogleApi\Model\GetAllAlerts;
+// 				$GetAllAlerts::run($service, $exampleAccountId);
+				
 			} else {
 				'No accounts found, unable to run dependant examples.';
 			}
@@ -450,7 +725,7 @@ class AdsenseReportController extends AbstractActionController {
 				
 			$_SESSION['access_token'] = $client->getAccessToken();
 	
-			echo '</pre>';
+			# echo '</pre>';
 			 
 			
 	} else 
@@ -458,13 +733,38 @@ class AdsenseReportController extends AbstractActionController {
 		$getAccessToken = 0; 
 	}	
 	 
-	 
-	 
+	# Set Get List Assign
+	$listOfAssign = array();
+	$AssignTable = $this->getServiceLocator()->get('Users\Model\AssignTable');
+	 # supper -- Assign --> Pub $session->offsetSet('Token_key_user_supper', $Token_key_user); $session->offsetSet('Token_key_user_supper_Pub_id', $id);$session->offsetSet('Token_key_user_supper_Pub_email', $User_get['email']);
+	if ($session->offsetExists('Token_key_user_supper')) {
+		# Supper Query
+		$id_user = $session->offsetGet('Token_key_user_supper_Pub_id'); 
+		$Get_All = $AssignTable->fetchAll(null,$id_user); 
+		foreach ( $Get_All as $key=>$value)
+		{
+			# echo "<pre>"; print_r($value); echo "</pre>";
+			$listOfAssign[] = $value['id_adunit'];
+		}
+	}else 
+	{
+		# User Pub Query
+		$id_user = $session->offsetGet('userId');
+		$Get_All = $AssignTable->fetchAll(null,$id_user);
+		foreach ( $Get_All as $key=>$value)
+		{
+			# echo "<pre>"; print_r($value); echo "</pre>";
+			$listOfAssign[] = $value['id_adunit'];
+		}
+	} 
+	 # end SetGet List Assign
+	  
 	$view = new ViewModel ( array (
 			'authUrl' => $authUrl,
 			'client' => $client,
 			'filename_client'=>$filename_client,
-			'getAccessToken'=>$getAccessToken
+			'getAccessToken'=>$getAccessToken,
+			'listOfAssign'=>$listOfAssign,
 	) );
 	return $view;
 	}
@@ -1276,6 +1576,24 @@ class AdsenseReportController extends AbstractActionController {
 				'filename_client'=>$filename_client,
 				) );
 		return $view;
+	}
+	
+	public function GenerateGeoChartAction()
+	{
+		$model = new ViewModel([ ]);
+		# return $model->setTemplate('index');
+	}
+	
+	public function GenerateLineChartAction()
+	{
+		$model = new ViewModel([ ]);
+		# return $model->setTemplate('index');
+	}
+	
+	
+	public function setpaymentAction()
+	{
+		
 	}
 	
 	

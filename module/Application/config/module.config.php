@@ -41,9 +41,9 @@ return array(
                 		
                 		'route'    => '/application',
                 		'defaults' => array(
-                				'__NAMESPACE__' => 'GoogleApi\Controller',
-            					'controller' => 'GoogleApi\Controller\AdsenseReport',
-                				'action'        => 'reportcallback',  
+                				'__NAMESPACE__' => 'Acelaya\Controller',
+            					'controller' => 'Acelaya\Controller\Index',
+                				'action'        => 'DashboardUser',  
                 		),
                 ),
                 'may_terminate' => true,

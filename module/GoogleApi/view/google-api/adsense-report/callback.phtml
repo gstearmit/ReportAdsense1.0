@@ -7,21 +7,6 @@ $full_name  =  $first_name . ' ' . $last_name;
 $userName   =  $session->offsetGet('userEmail');
 $userId     =  $session->offsetGet('userId');
 
-# Publiser Set
-$id_Publiser = null;
-if ($session->offsetExists('Token_key_user_supper')) {
-   $Token_key_user_supper  = $session->offsetGet('Token_key_user_supper');
-}
-if ($session->offsetExists('Token_key_user_supper_Pub_id')) {
-    $id_Publiser           = $session->offsetGet('Token_key_user_supper_Pub_id');
-}
-if ($session->offsetExists('Token_key_user_supper_Pub_email')) { 
-    $email_Publiser        = $session->offsetGet('Token_key_user_supper_Pub_email');
-}
-# End Publiser 
-
-
-
 $session_GetAllAccounts = new Container('AllAccounts');
 if ($session_GetAllAccounts->offsetExists('Accounts_id')) {
 	$Accounts_id   =  $session_GetAllAccounts->offsetGet('Accounts_id');
@@ -102,16 +87,9 @@ CHART;
     text-decoration: none;
     font-size: 12px;
 }
-#datatable-user-manager tbody tr:nth-child(even){
-background:#fff;
-}
-
-#datatable-user-manager tbody tr:nth-child(odd) {
-    background: rgba(0, 255, 237, 0.16);
-}
 </style>
  <div class="container"> 
-				    <?php if( $getAccessToken == 1   ) { ?>
+				    <?php if( $getAccessToken == 1 and $iduser== null and $User_get == null ) { ?>
 				    <div class="row"> 
 				      <div class="col-sm-12">
 				          <ul class="list-group">
@@ -163,10 +141,9 @@ background:#fff;
 									                
 									                  <div class="container">
 												        <h2>Get All AdUnits</h2>
-													    <p> View AllGetAllAdUnits of Publisher :  <span class="label label-success"><span class="glyphicon glyphicon-user"></span> <?php echo $Accounts_id .'-'.$Accounts_name?>.</span></p>
+													    <p> View AllGetAllAdUnits of Publisher :  <span class="label label-success"><?php echo $Accounts_id .'-'.$Accounts_name?>.</span></p>
 												        </div>
 									                    <div id="status_data" class="col-sm-12" ></div> <!--  $('#status_data').html(data);		 -->
-									                     
 									                    <table id="datatable-user-manager" class="table table-sorting table-dark-header datatable">
 									                        <thead>
 									                            <tr>
@@ -176,23 +153,17 @@ background:#fff;
 									                                <th>Status</th>
 									                                <th>ACTIVE/INACTIVE</th>
 									                                <!--  <th>Action</th> -->
-									                                <?php if( $userName  == 'reportadsense2016@gmail.com') {?>
-									                                <th>Assign to pub <span class="label label-success"><span class="glyphicon glyphicon-user"></span> <?php echo $full_name;?></span></th>
-									                                <?php } ?>
+									                                <th>Assign to pub <span class="label label-success"><?php echo $full_name;?></span></th>
 									                                <th>Connect Report</th>
 									                            </tr>
 									                        </thead>
 									                        <tbody>
-									                        
 									                           <?php   
 									                           # Data GetAllAdUnits 
 									                   if($session_GetAllAdUnits->offsetExists('AllAdUnits')){
 									                      	$Get_AllAdUnits = $session_GetAllAdUnits->offsetGet('AllAdUnits');
 									                           if (!empty($Get_AllAdUnits)) {
-									                           	if( $userName  != 'reportadsense2016@gmail.com'){ 	
-									                           	# Khong la supper
-									                           	foreach ($Get_AllAdUnits as $adUnit) { 
-									                           		  if (in_array($adUnit['code'], $listOfAssign)) { 
+									                           	foreach ($Get_AllAdUnits as $adUnit) {
 									                           ?>
 									                            <tr>
 									                                <td> 
@@ -210,14 +181,13 @@ background:#fff;
 									                                </td>
 									                                <td><?php echo  $adUnit['code'];?></td>  
 									                                <td id="status<?php echo $adUnit['code']; ?>">
-									                                   <?php
-											                                    if($adUnit['status'] == 'ACTIVE'){
-											                                        echo '<span class="label label-success"><span class="glyphicon glyphicon-thumbs-up"></span> '.$adUnit['status'].'</span>';
-											                                    } else   {
-											                                         echo '<span class="label label-danger"><span class="glyphicon glyphicon-thumbs-down"></span> '.$adUnit['status'].' </span>';
-											                                     }
-											                                    ?>
-									                                    
+									                                    <?php
+									                                    if($adUnit['status']){
+									                                        echo '<span class="label label-success"><i class="fa fa-check-circle-o"></i> '.$adUnit['status'].'</span>';
+									                                    } else   {
+									                                         echo '<span class="label label-danger"><i class="fa fa-minus-circle"></i> Null</span>';
+									                                    }
+									                                    ?>
 									                                </td>
 									                                <td>
 									                                    <input id="assign<?php echo $adUnit['code']; ?>" 
@@ -239,101 +209,21 @@ background:#fff;
 									                                    <button class="btn btn-danger btn-xs" onclick="deleteaction90(<?php echo $adUnit['code']; ?>)"><i class="fa fa-trash"></i> Delete</button>
 									                                </td>
 									                                -->   
-									                                 <?php if( $userName  == 'reportadsense2016@gmail.com') {?>
 									                                 <td>
 									                                    <span id="return<?php echo $adUnit['code']; ?>"></span>
-									                                    <span  id="assigntext<?php echo $adUnit['code']; ?>"   onclick="assignset('<?php echo $adUnit['code'];?>','<?php echo $id_Publiser + Pr_UserId;?>')" ><i class="fa fa-trash"></i>
-									                                      <p class="btn btn-warning btn-xs" >Assign</p>
+									                                    <span   class="btn btn-warning btn-xs"      onclick="assignset('<?php echo $adUnit['code'];?>','<?php echo $userId + Pr_UserId;?>')" ><i class="fa fa-trash"></i>
+									                                      <p id="assigntext<?php echo $adUnit['code']; ?>">Assign</p>
 									                                    </span>
 									                                </td>
-									                                <?php } ?>
 									                                
 									                                <td>
 									                                   <a href="<?php #echo $authUrl; ?>" >
-									                                      <button class="btn label label-success btn-xs"  > <span class="glyphicon glyphicon-signal"></span> Connect Report Adsense  </button>
+									                                      <button class="btn label label-success btn-xs"  ><i class="fa fa-trash"></i> Connect Report Adsense  </button>
 									                                   </a>    
 									                                </td>
 									                            </tr>
-									                           <?php    } #end Check Assign  
+									                           <?php  
 									                              } # empty($Get_AllAdUnits)
-									                           	} # end ko la supper
-									                           	else { 
-									                           		#   la supper 
-											                           	foreach ($Get_AllAdUnits as $adUnit) {  
-											                           ?>
-											                            <tr>
-											                                <td> 
-											                                   <div class="checkbox">
-																				  <input type="checkbox" value=""> 
-																				</div>
-											                                </td> 
-											                                <td>
-											                                  <div class="col-sm-12 ">
-											                                   <?php echo $adUnit['name'];?>
-											                                  </div>
-											                                    <div class="col-sm-12 text-view">
-											                                      <a href=""><span>Hiden</span></a> |  <a href=""><span>View Report</span></a> |  <a href=""><span>GetCode</span></a>
-											                                    </div>
-											                                </td>
-											                                <td><?php echo  $adUnit['code'];?></td>  
-											                                <td id="status<?php echo $adUnit['code']; ?>">
-											                                    <?php
-											                                    if($adUnit['status'] == 'ACTIVE'){
-											                                        echo '<span class="label label-success"><span class="glyphicon glyphicon-thumbs-up"></span> '.$adUnit['status'].'</span>';
-											                                    } else   {
-											                                         echo '<span class="label label-danger"><span class="glyphicon glyphicon-thumbs-down"></span> '.$adUnit['status'].' </span>';
-											                                        
-											                                    }
-											                                    ?>
-											                                </td>
-											                                <td>
-											                                    <input id="assign<?php echo $adUnit['code']; ?>" 
-											                                           onchange="active_usser90(<?php echo $adUnit['code'];?>)" 
-											                                           <?php if($adUnit['status']=='ACTIVE'){ echo 'checked';}?> 
-											                                           type="checkbox"  
-											                                           data-toggle="toggle" 
-											                                           data-onstyle="success" 
-											                                           data-on="Active"  
-											                                           data-off="Pause" 
-											                                           data-offstyle="danger" 
-											                                           data-size="mini" 
-											                                           data-style="ios">
-											                                           
-											                                    
-											                                </td>
-											                               <!--    
-											                                <td>
-											                                    <button class="btn btn-danger btn-xs" onclick="deleteaction90(<?php echo $adUnit['code']; ?>)"><i class="fa fa-trash"></i> Delete</button>
-											                                </td>
-											                                -->   
-											                                 <?php if( $userName  == 'reportadsense2016@gmail.com') {?>
-											                                 <td>
-											                                    <span id="return<?php echo $adUnit['code']; ?>"></span>
-											                                   
-											                                      <?php if (!in_array($adUnit['code'], $listOfAssign)) { ?>
-												                                       <span  id="assigntext<?php echo $adUnit['code']; ?>"   onclick="assignset('<?php echo $adUnit['code'];?>','<?php echo $id_Publiser + Pr_UserId;?>')" ><i class="fa fa-trash"></i>
-												                                          <p class="btn btn-warning btn-xs" ><span class="glyphicon glyphicon-minus-sign"></span> Assign</p>
-												                                       </span>   
-											                                      <?php }else { 
-											                                      	$id_user_assign = $id_Publiser + Pr_UserId;
-											                                      	?>
-											                                      	   <span  id="assigntext<?php echo $adUnit['code'];?>"   onclick="dis_assign_set('<?php echo $adUnit['code'];?>','<?php echo $id_user_assign ;?>')" >
-											                                                 <p class="btn label label-success btn-xs" ><span class="glyphicon glyphicon-ok-sign"></span> Assigned</p>
-											                                          </span> 
-											                                         <?php  }?>    
-											                                    
-											                                </td>
-											                                <?php } ?>
-											                                
-											                                <td>
-											                                   <a href="<?php #echo $authUrl; ?>" >
-											                                      <button class="btn label label-success btn-xs"  > <span class="glyphicon glyphicon-signal"></span> Connect Report Adsense  </button>
-											                                   </a>    
-											                                </td>
-											                            </tr>
-											                           <?php    } #end Foreach  
-									                           	} # end la supper
-									                           		
 									                           } else {
 									                             	print "No ad units found.\n";
 									                            }
@@ -353,7 +243,7 @@ background:#fff;
 				           
 						   </div></div><!-- end Table GetAllAdUnits -->
 						   
-					<?php }  else if( $getAccessToken == 0   ) { 
+					<?php }  else if( $getAccessToken == 0 and $iduser== null and $User_get == null ) { 
 					  ?>
 					    <div class="row"> 
 				         <div class="col-sm-12">
@@ -367,7 +257,24 @@ background:#fff;
 						};
 						echo "</div></div>";
 					} # end esle
-					?> 
+					else if( $getAccessToken == 0 and $iduser != null and $User_get != null ) {
+						?>
+								    <div class="row"> 
+									         <div class="col-sm-12">
+										  <?php 
+											# Neu Chua co Token thi ket noi den api google de lay token
+											echo '<div><div class="request" style="min-height: 300px; margin: 10px;">';
+											if (isset($authUrl)) {
+												echo "<h3> Hello, Manager : ".$full_name."  </h3>";
+												echo '<a class="login" href="' . $authUrl . '">Click Report Adsense For User '.$User_get['first_name'].' '.$User_get['first_name'].'-'.$User_get['last_name'].'</a>';
+											} else {
+												echo '<a class="logout" href="'.WEBPATH.'/users/logout">Logout</a>';
+											};
+											echo "</div></div>";
+										} # end esle
+					?>	  
+					
+						  
 						 </div>
 				    
 	 </div></div></div> <!--  end Container	 -->	    
@@ -384,53 +291,22 @@ $(document).ready(function(){
 function assignset(adunit_id,idu){
     if($('#assign'+adunit_id).prop("checked") === true){
        var active='Assigned';
-       $('span#assigntext'+adunit_id).html('<p id="p#assigntext'+adunit_id+'" class="label label-success"><i class="fa fa-check-circle-o"></i> Assigned</p>');
+       $('p#assigntext'+adunit_id).html('<p id="p#assigntext'+adunit_id+'" class="label label-success"><i class="fa fa-check-circle-o"></i> Assigned</p>');
     }else{
            active = 'Not Assign';
-           $('span#assigntext'+adunit_id).html('<p id="p#assigntext'+adunit_id+'" class="label label-danger"><i class="fa fa-minus-circle"></i> Not Assign</p>');
+           $('p#assigntext'+adunit_id).html('<p id="p#assigntext'+adunit_id+'" class="label label-danger"><i class="fa fa-minus-circle"></i> Not Assign</p>');
     }
      $.ajax({
 	   type: "POST",
 	   url:  "<?php echo WEBPATH?>/users/assign",
 	   data: 'id='+idu+'&adunit_id='+adunit_id+'&status='+active,
 	   success: function(data){
-		      // console.log(" active_usser : " + data);
+		       console.log(" active_usser : " + data);
 		       $('#status_data').html(data);
 		       $('#return'+adunit_id).html(data);		
 			   }
    });
 }
-
-function dis_assign_set(adunit_id,idu)
-{  if($('#assign'+adunit_id).prop("checked") === true){
-        var active='Assign';
-        $('span#assigntext'+adunit_id).html('<p id="p#assigntext'+adunit_id+'" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-minus-sign"></span> Assign</p>');
-     }else{
-            active = 'Not Assign';
-            $('span#assigntext'+adunit_id).html('<p id="p#assigntext'+adunit_id+'" class="label label-danger"><span class="glyphicon glyphicon-minus-sign"></span> Not Assign</p>');
-     }
-     
-    var txt;
-    var r = confirm("do you really want to cancel this task for one pub!");
-    if (r == true) {
-    	 $.ajax({
-    	 	   type: "POST",
-    	 	   url:  "<?php echo WEBPATH?>/users/notassign",
-    	 	   data: 'id='+idu+'&adunit_id='+adunit_id+'&status='+active,
-    	 	   success: function(data){
-    	 		      // console.log(" active_usser : " + data);
-    	 		       $('#status_data').html(data);
-    	 		       $('#return'+adunit_id).html(data);	
-
-    	 		      	
-    	 		 } // end success
-    	    });
-    } else {
-        txt = "You pressed Cancel!";
-    }
-     
- }
-
 
  function deleteaction(key) {
               

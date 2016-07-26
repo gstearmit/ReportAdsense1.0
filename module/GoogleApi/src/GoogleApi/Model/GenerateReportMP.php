@@ -1,5 +1,7 @@
 <?php 
-
+/**
+ * @Hoang Phuc
+ */
 /**
  * Retrieves a report for the specified ad client.
  *
@@ -7,8 +9,8 @@
  */
 
 namespace GoogleApi\Model;
-
-class GenerateReport {
+use Zend\Session\Container;
+class GenerateReportMP {
   /**
    * Retrieves a report for the specified ad client.
    *
@@ -18,11 +20,7 @@ class GenerateReport {
    * @param $adClientId string the ad client ID on which to run the report.
    */
   public static function run($service, $accountId, $adClientId) {
-    $separator = str_repeat('=', 80) . "\n";
-    print $separator;
-    printf("Running report for ad client %s\n", $adClientId);
-    print $separator;
-
+  	$session = new Container('GenerateReport');
     $startDate = 'today-7d';
     $endDate = 'today-1d';
 
@@ -42,22 +40,34 @@ class GenerateReport {
 
     if (isset($report) && isset($report['rows'])) {
       // Display headers.
-      foreach($report['headers'] as $header) {
-        printf('%18s', $header['name']);
-      }
-      print "\n";
+//       foreach($report['headers'] as $header) {
+//         printf('%25s', $header['name']);
+//       } 
+//       print "\n";
+
+        if( !empty($report['headers']) )
+        {
+        	$session->offsetSet('GenerateReport_headers', $report['headers'] );
+        }
 
       // Display results.
-      foreach($report['rows'] as $row) {
-        foreach($row as $column) {
-          printf('%18s', $column);
+//       foreach($report['rows'] as $row) {
+//         foreach($row as $column) {
+//           printf('%25s', $column);
+//         }
+//         print "\n";
+//       }
+      
+        if( !empty($report['rows']) )
+        {
+        	$session->offsetSet('GenerateReport_rows', $report['rows'] );
         }
-        print "\n";
-      }
+      
     } else {
-      print "No rows returned.\n";
+      # print "No rows returned.\n";
+    	$session->offsetSet('GenerateReport_rows', null );
     }
 
-    print "\n";
+    # print "\n";
   }
 }
